@@ -10,13 +10,14 @@
         The position property in CSS is used to define how an element is positioned in the document. It determines the positioning behavior of an element (how it is placed on the page) and works with properties like top, right, bottom, and left.
         * It can take the following values:
         | Value      | Description                                                                                                                         |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `static`   | **Default value.** Elements are placed in the normal document flow. `top`, `left`, etc. **do not work**.                            |
-| `relative` | Positions the element **relative to its normal position**. You can shift it using `top`, `left`, etc.                               |
-| `absolute` | Positions the element **relative to the nearest positioned ancestor** (not `static`). If none, it's relative to the `html` element. |
-| `fixed`    | Positions the element **relative to the viewport** (browser window). It stays in place even when scrolling.                         |
-| `sticky`   | Acts like `relative` until a certain scroll position, then behaves like `fixed`.                                                    |
-
+| Position   | What it Means                                                                                   | Example Use                  |
+| ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------- |
+| `static`   | Default. The element appears where it normally would in HTML.                                   | Regular paragraphs, headers. |
+| `relative` | Moves the element **relative to its normal place**.                                             | Nudging an element slightly. |
+| `absolute` | Takes the element **out of the flow** and places it **based on its nearest positioned parent**. | Popups, tooltips.            |
+| `fixed`    | Like `absolute`, but sticks to the **browser window**. It doesn't move when you scroll.         | Sticky navbar.               |
+| `sticky`   | Starts out like `relative`, then becomes `fixed` when you scroll past it.                       | Sticky headers.              |
+        * The `top`, `right`, `bottom`, and `left` properties specify the offset of the element from its positioned ancestor or the viewport.
         */
         *{
             margin: 0;
