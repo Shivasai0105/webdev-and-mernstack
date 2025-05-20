@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css overflow handling</title>
+    <style>
+        .box{
+            width: 45ww;
+            height: 10vh;
+            border: 2px solid black;
+            overflow: auto; /* scroll, hidden, auto, visible */
+            /* scroll: always show scrollbar */
+            /* hidden: hide overflow content */
+            /* auto: show scrollbar when needed */
+            /* visible: overflow content is visible */
+            /* but not recommended */
+            /* clip: hide overflow content */
+            /* but not recommended */
+            white-space: nowrap; /* prevent text from wrapping */
+            /*text-overflow: ellipsis;
+            /* add ellipsis (...) to overflowing text */
+            /* but only works with white-space: nowrap */
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div class="box">
+        <p>Lorem ipsum dolor sit, amet conse
+        ctetur adipisicing elit. Maiores 
+        aut iste neque. Reiciendis in arch
+        itecto possimus rerum laudantium, magni anim
+        i minus nam, voluptatum fugiat tempore offic
+        iis nostrum ab aliquid quasi quas tota
+        m assumen
+        
+        da, perferendis alias tenetu
+        r non. Natus fuga atque odit error obcae
+        cati quibusdam non! Earum nisi, quo inventore ea qui enim doloribus temporibus minima voluptatem eaque accusantium saepe. Blanditiis porro dolores quae eius itaque error rerum, suscipit expedita qui. Cupiditate nulla dolorem dolore consequuntur numquam delectus fuga quia, reprehenderit, architecto explicabo ea eaque neque fugit iure laudantium mollitia soluta totam impedit exercitationem non. 
+        Nesciunt impedit cumque natus labore.</p>
+    </div>
+
+</body>
+</html>
