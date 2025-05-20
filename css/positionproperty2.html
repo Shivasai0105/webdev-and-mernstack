@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Position Property Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 2000px; /* So we can scroll */
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .static-box {
+      background-color: gray;
+      position: static; /* Default, this is optional */
+    }
+
+    .relative-box {
+      background-color: green;
+      position: relative;
+      top: 20px; /* Moves down from its normal place */
+      left: 30px; /* Moves right from its normal place */
+    }
+
+    .absolute-container {
+      position: relative;
+      border: 2px dashed red;
+      height: 200px;
+    }
+
+    .absolute-box {
+      background-color: blue;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .fixed-box {
+      background-color: orange;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+
+    .sticky-box {
+      background-color: purple;
+      position: sticky;
+      top: 0; /* It will stick to top when scrolled */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>1. Static Position (Default)</h2>
+  <div class="box static-box">
+    Static Box<br>
+    (Stays in normal flow)
+  </div>
+
+  <h2>2. Relative Position</h2>
+  <div class="box relative-box">
+    Relative Box<br>
+    (Moved from its normal spot)
+  </div>
+
+  <h2>3. Absolute Position (Inside Relative Container)</h2>
+  <div class="absolute-container">
+    <div class="box absolute-box">
+      Absolute Box<br>
+      (Placed inside red border)
+    </div>
+  </div>
+
+  <h2>4. Fixed Position</h2>
+  <div class="box fixed-box">
+    Fixed Box<br>
+    (Sticks to screen corner)
+  </div>
+
+  <h2>5. Sticky Position</h2>
+  <div class="box sticky-box">
+    Sticky Box<br>
+    (Sticks to top when scrolling)
+  </div>
+
+</body>
+</html>
