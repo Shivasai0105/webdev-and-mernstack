@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model and Margin Collapse</title>
+    <style>
+        /* 
+            🔷 UNIVERSAL SELECTOR
+            Removes default margin and padding from all elements
+            to ensure consistent styling across browsers.
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+            🔷 BOX MODEL EXPLANATION:
+            Every HTML element is a box made up of 4 parts:
+            -------------------------------------------
+            |               Margin                    |
+            |  -------------------------------------  |
+            |  |             Border                |  |
+            |  |  -----------------------------    |  |
+            |  |  |         Padding         |     |  |
+            |  |  |  ---------------------  |     |  |
+            |  |  |  |     Content       |  |     |  |
+            |  |  |  ---------------------  |     |  |
+            |  |  -----------------------------    |  |
+            |  -------------------------------------  |
+            -------------------------------------------
+
+            ▪ margin: space outside the border
+            ▪ border: edge around the padding/content
+            ▪ padding: space between content and border
+            ▪ content: actual text or image
+
+            🔸 'box-sizing: border-box' includes padding and border 
+            inside the element's specified width and height.
+        */
+
+        .box {
+            background-color: lightblue; /* Background applied to both boxes */
+        }
+
+        .box1 {
+            color: yellow;
+            padding: 10px;               /* Space inside border */
+            margin: 5px;                 /* Space outside the box */
+            border: 2px solid black;     /* Visible edge */
+            height: 200px;
+            box-sizing: border-box;      /* Includes padding and border in the height */
+        }
+
+        .box2 {
+            color: red;
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid blue;
+            height: 200px;
+            box-sizing: border-box;
+        }
+
+        /*
+            🔷 MARGIN COLLAPSE CONCEPT:
+
+            When two vertical margins meet, only the larger one is kept.
+            This is called "margin collapse".
+
+            Example:
+                box1 has margin-bottom: 5px
+                box2 has margin-top: 5px
+
+                Instead of 5px + 5px = 10px spacing,
+                You get only 5px of space between them.
+
+            Only vertical (top/bottom) margins collapse. Horizontal (left/right) margins do not.
+        */
+    </style>
+</head>
+<body>
+    <!-- 
+        Two divs below demonstrate box model and margin collapse.
+        Due to margin collapse, space between them is not 10px (5px + 5px) but only 5px.
+    -->
+    <div class="box box1">I am a box</div>
+    <div class="box box2">I am another box</div>
+</body>
+</html>
+<!-- 
+    🔷 MARGIN COLLAPSE EXAMPLE:
+    The space between the two boxes is 5px instead of 10px due to margin collapse.
+    This is a common behavior in CSS and can be useful for layout design. -->

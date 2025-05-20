@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms in html</title>
+    <style>
+        /* Reset & Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fff5f5;
+    color: #333;
+    padding: 2rem;
+}
+
+/* Headings */
+h1 {
+    color: #d90429;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+/* Form Styling */
+form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form div {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d90429;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #a0001f;
+}
+
+/* Radio and Checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 0.4rem;
+}
+
+/* Section Titles */
+form p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #d90429;
+}
+
+/* Buttons */
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    background-color: #d90429;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+    background-color: #a0001f;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Forms in html</h1>
+    <p>Forms are used to collect user input. They can be used to collect text, numbers, dates, and other types of data.</p>
+    <p>Here is an example of a simple form:</p>
+    <form action="tables.html">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+        <div>
+            <label for="dates">Date:</label>
+            <input type="date" id="dates" name="dates" required placeholder="Enter your date of birth"> 
+        </div>
+        <div>
+            <label for="gender">Gender</label>
+            <select name="" id="gender" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="other">other</option>
+            </select>
+        </div>
+        <div>
+            <p>subscription</p>
+            <input type="radio" id="premium" name="subscription" value="premium" required>
+            <label for="premium">premium</label>
+            <input type="radio" id="basic" name="subscription" value="basic" required>
+            <label for="basic">basic</label>
+            <input type="radio" id="free" name="subscription" value="free" required>
+            <label for="free">free</label>
+        </div>
+        <div>
+            <p>Hobbies</p>
+            <input type="checkbox" id="hobby1" name="hobby1" value="hobby1">
+            <label for="hobby1">hobby1</label>
+            <input type="checkbox" id="hobby2" name="hobby2" value="hobby2">
+            <label for="hobby2">hobby2</label>
+            <input type="checkbox" id="hobby3" name="hobby3" value="hobby3">
+            <label for="hobby3">hobby3</label>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" cols="50" required placeholder="Enter your message"></textarea>
+        </div>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        <input type="button" value="Cancel" onclick="window.location.href='tables.html'"> <!-- this will redirect to tables.html page -->
+        <input type="hidden" name="hidden" value="hidden"> <!-- this will not be visible to the user but will be sent to the server when the form is submitted -->
+    </form>
+
+</body>
+</html>

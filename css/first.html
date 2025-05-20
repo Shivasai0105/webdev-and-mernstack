@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Types Comparison</title>
+
+  <!-- ✅ Internal CSS: Applied to multiple elements in the same file -->
+  <style>
+    .internal-style {
+      color: blue;
+      font-size: 20px;
+    }
+
+    .external-style {
+      color: green;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+
+  <!-- ✅ External CSS: Best for reusability across many HTML files -->
+  <!-- Simulating external CSS here, normally you link like this: -->
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+
+  <h2>1. Inline CSS</h2>
+  <p style="color: red; font-size: 22px;">
+    This is Inline CSS (written directly in the tag)<br>
+    ✅ Good for quick changes to one element only.<br>
+    ❌ Not reusable. ❌ Clutters HTML. ❌ Hard to maintain in large projects.
+  </p>
+
+  <hr>
+
+  <h2>2. Internal CSS</h2>
+  <p class="internal-style">
+    This is Internal CSS (written in a &lt;style&gt; tag in the &lt;head&gt;)<br>
+    ✅ Good for styling an entire page.<br>
+    ✅ Centralized in one spot per file.<br>
+    ❌ Not reusable across multiple HTML files.
+  </p>
+
+  <hr>
+
+  <h2>3. External CSS</h2>
+  <p class="external-style">
+    This is External CSS (written in a separate .css file)<br>
+    ✅ Best for large websites.<br>
+    ✅ Keeps HTML clean.<br>
+    ✅ Reusable across multiple pages.<br>
+    ❌ Requires extra file and link setup.
+  </p>
+
+  <hr>
+
+  <h2>4. CSS Priority (Conflict Example)</h2>
+  <p class="external-style internal-style" style="color: orange;">
+    All three types applied — inline, internal, and external.<br>
+    🔥 Final color is <strong>orange</strong> from INLINE CSS.<br>
+    ✅ Inline > Internal > External
+  </p>
+
+</body>
+</html>

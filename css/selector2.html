@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectors in CSS</title>
+  <style>
+    /* ✨ Universal Selector */
+    /* Selects ALL elements on the page */
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 🔹 Element Selector */
+    /* Selects all <div> elements */
+    div {
+      background-color: lightblue;
+    }
+
+    /* 🔹 Class Selector */
+    /* Selects elements with class="red-background" */
+    /* Use a dot (.) before the class name */
+    .red-background {
+      background-color: red;
+    }
+
+    /* 🔹 ID Selector */
+    /* Selects the element with id="green-background" */
+    /* Use a hash (#) before the id name */
+    #green-background {
+      background-color: green;
+    }
+
+    /* 🔹 Child Selector */
+    /* Selects only direct child <p> elements of <div> */
+    div > p {
+      background-color: yellow;
+    }
+
+    /* 🔹 Child Selector (nested) */
+    /* Selects <p> elements that are direct children of <article>, which is a child of <span> */
+    span > article > p {
+      background-color: orange;
+    }
+
+    /* Selects <article> elements directly inside <span> */
+    span > article {
+      background-color: pink;
+    }
+
+    /* 🔹 Descendant Selector */
+    /* Selects ALL <p> elements inside a <div> (any level deep) */
+    div p {
+      color: crimson;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 🔸 Element Selector Example -->
+  <div>
+    This is a div element with a light blue background.
+  </div>
+
+  <!-- 🔸 Class Selector Example -->
+  <div class="red-background">
+    This div uses a class selector (red-background) to turn red.
+  </div>
+
+  <!-- 🔸 ID Selector Example -->
+  <div id="green-background">
+    This div uses an ID selector (green-background) to turn green.
+  </div>
+
+  <!-- 🔸 Child Selector Example -->
+  <div>
+    <p>This paragraph is a direct child of a div → Yellow background.</p>
+    This is just text inside the div.
+  </div>
+
+  <!-- 🔸 Nested Child Selector Example -->
+  <span>
+    <article>
+      <p>This paragraph is a child of article, which is a child of span → Orange background.</p>
+      Text inside article element (pink background).
+    </article>
+  </span>
+
+  <!-- 🔸 Descendant Selector Example -->
+  <div>
+    <p>This paragraph is a descendant of a div → Text is crimson.</p>
+  </div>
+
+</body>
+</html>

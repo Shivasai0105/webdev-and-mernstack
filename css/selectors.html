@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors in CSS</title>
+    <style>
+        
+        div{
+            background-color: lightblue;
+        }
+        /*this is a class selector*/
+        /*it selects all elements with the class name red-background*/
+        /*the class name is preceded by a dot (.)*/
+        /*the class name is red-background*/
+        .red-background{
+            background-color: red;
+        }
+        /*this is an id selector*/
+        /*it selects the element with the id name my-id*/
+
+        /*the id name is preceded by a hash (#)*/
+        /*the id name is green-background*/
+        #green-background{
+            background-color: green;
+        }
+        /*this is a child selector*/
+        /*it selects all elements that are children of the element with the id name my-id*/
+        div >p{
+            background-color: yellow;
+        }
+        span > article > p{
+            background-color: orange;
+        }
+        span > article{
+            background-color: pink;
+        }
+        /*this is a descendant selector*/
+        /*it selects all elements that are descendants of the element with the id name my-id*/
+        div p{
+            color: crimson;
+        }
+        /*universal selector */
+        /*it selects all elements in the document*/
+        
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        /*psedo class selector*/
+        /*it selects all elements that are visited over*/
+        /*it selects all elements that are visited over*/
+        a:visited{
+            color: blue;
+           
+        }
+        /*it selects all elements that are not visited over
+        the unvisited link color is red*/
+        a:link{
+            color: red;
+        }
+        /*it selects all elements that are active over
+        when the user clicks on the link the background color changes to green*/
+        a:active{
+            background-color: green;
+        }
+        /*it selects all elements that are hovered over
+        when the user hovers over the link the background color changes to yellow*/
+        /*the hover color is yellow*/
+        a:hover{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        this is a div element with a light blue background.
+    </div>
+    <div class="red-background">
+        this is another div element with a red background.
+        this is a div element with a class of red-background.
+    </div>
+    <div id="green-background">
+        this is a div element with a green background.
+        this is another div element with an id of green-background.
+    </div>
+        <div>
+            <p>this is a child selector inside the div tag</p>
+            this is a child div element of the div
+        </div>
+        <span>
+            <article>
+                <p>this is a child selector inside the article tag</p>
+                this is a child article element of the span
+            </article>
+        </span>
+        <div>
+            <p>this is a descendant selector </p>
+        </div>
+        <a href="https://www.google.com">google</a>
+        <a href="https://www.facebook.com">facebook</a>
+</body>
+</html>

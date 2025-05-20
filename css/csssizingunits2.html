@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Sizing Units</title>
+  <!-- Learn more: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units -->
+
+  <style>
+    /*
+    ----------------------------
+    CSS SIZING UNITS EXPLAINED:
+    ----------------------------
+    
+    1) px (Pixels):
+       - Absolute unit.
+       - Fixed size regardless of screen resolution or font size.
+
+    2) rem (Root em):
+       - Relative to the root element's font size (usually <html>).
+       - 1rem = 16px by default.
+
+    3) em (Ems):
+       - Relative to the font size of the parent element.
+       - Example: If parent is 16px, 2em = 32px.
+
+    4) vh (Viewport Height):
+       - 1vh = 1% of the height of the viewport.
+       - Responsive to screen height.
+
+    5) vw (Viewport Width):
+       - 1vw = 1% of the width of the viewport.
+       - Responsive to screen width.
+
+    6) vmin / vmax:
+       - vmin = smaller of vw or vh.
+       - vmax = larger of vw or vh.
+
+    7) % (Percentage):
+       - Relative to the parent element's size.
+
+    ----------------------------
+    */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      border: 1px solid black;
+      width: 80vw;         /* 80% of the viewport width */
+      height: 10vh;        /* 10% of the viewport height */
+      margin: auto;        /* Center the box (block elements only) */
+      background-color: lightblue;
+    }
+
+    .container {
+      border: 2px solid black;
+      min-width: 80vw;
+      width: 80vw;         /* 80% of the viewport width */
+      height: 80vh;        /* 80% of the viewport height */
+      margin: 23px auto;   /* Center the container */
+      font-size: 16px;
+      background-color: lightblue;
+    }
+
+    .container p {
+      font-size: 3em;      /* 3 × parent font-size → 48px if parent is 16px */
+      /* font-size: 1rem;  1rem = 16px if html font-size is 16px */
+    }
+
+    .mycon {
+      border: 2px solid black;
+      color: black;
+      font-size: 22px;
+      margin: 23px auto;
+      width: 80vw;         /* 80% of the viewport width */
+      /* width: 100vh;     Incorrect usage: 'vh' should not be used for width */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- viewport width (vw) -->
+  <!-- viewport height (vh) -->
+
+  <!-- A simple box using vw and vh units -->
+  <div class="box">
+    This is a div box
+  </div>
+
+  <!-- A container demonstrating height and font scaling with em -->
+  <div class="container">
+    <p>
+        lore
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae magni neque itaque aliquid sapiente similique quae nihil saepe odio. Labore adipisci voluptatem voluptatum necessitatibus nesciunt!
+    </p>
+  </div>
+
+  <!-- Another styled container -->
+  <div class="mycon">
+    This is another container
+
+  </div>
+</body>
+</html>

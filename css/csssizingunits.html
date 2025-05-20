@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css sizing units </title>
+    <!-- https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units -->
+</head>
+<style>
+ /*   px depends on resolution,
+vh vw are device specific,
+vmin and vmax depends on orientation,
+em is multiplier on current value,
+rem is a multiplier on current value in respective to the root element,
+ % depends on parent 
+ 
+ 1)px (Pixels): Pixels are an absolute unit of measurement. They provide a fixed size regardless of other factors like text size or screen resolution. For example, 10px means the element is 10 pixels wide or tall.
+
+2)rem (Root em): "rem" stands for "root em." One "rem" is equivalent to the font size of the root element (usually the <html> element). If the root font size is set to 16px, then 1rem is equal to 16px, and 2rem is equal to 32px. It's a relative unit that makes it easy to scale elements based on the root font size.
+
+3)em (Ems): "em" is also a relative unit that's relative to the font size of the parent element. If the parent element's font size is 16px and you set a child element to 2em, it would be 32px (2 times the parent's font size).
+
+4)vh (Viewport Height): "vh" is a relative unit that represents a percentage of the viewport height. For example, 50vh would be 50% of the height of the viewport, so it's responsive to the screen size.
+
+5)vw (Viewport Width): "vw" is similar to "vh" but is relative to the viewport's width. For example, 25vw is 25% of the viewport width.
+
+In summary, "px" is an absolute unit, "rem" and "em" are relative units based on font sizes, and "vh" and "vw" are relative units based on the viewport's dimensions. Each of these units has its use case in web design, allowing for both fixed and responsive layouts.
+ 
+ */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        box-sizing: border-box;
+        border: 1px solid black;
+        /* width: 1200px; */
+        /* height: 10vh; */
+        width : 80vw; /* 100% of the viewport width */
+        height: 10vh; /* 10% of the viewport height */
+        margin:  auto; /* center the box  only for block elements not for inline elements*/
+
+        background-color: lightblue;
+    }
+    .container{
+        box-sizing: border-box;
+        border: 2px solid black;
+        /* width: 1200px; */
+        /* height: 10vh; */
+        min-width: 80vw;
+        width : 80vw; /* 100% of the viewport width */
+        height: 80vh; /* 10% of the viewport height */
+        margin: 23px auto; /* center the box  only for block elements not for inline elements*/
+        font-size: 16px;
+        background-color: lightblue;
+    }
+    .container p{
+        font-size: 3em; /* 1em is equal to the font size of the parent element 
+        example 1em = 16px as in parent if we take 1.5em them the calculated text size is 24px  if 3em = 48px*/
+        /*font-size: 1rem; /* 1rem is equal to the font size of the root element (html)*/
+    }
+    .mycon{
+        box-sizing: border-box;
+        margin: 23px auto; /* center the box  only for block elements not for inline elements*/
+        border: 2px solid black;
+        color: black;
+        font-size: 22px;
+        /*width: 100vh; /* 100% of the viewport minimum width */
+        width: 80vw;
+    }
+    
+</style>
+<!-- viewport width (vw) -->
+<!-- viewport height (vh) -->
+
+<body>
+    <!-- <h1>Types of sizing units</h1> -->
+    <div class="box">
+        This is a div box
+    </div>
+    <div class="container">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae magni neque itaque aliquid sapiente similique quae nihil saepe odio. Labore adipisci voluptatem voluptatum necessitatibus nesciunt! Aliquid voluptate perferendis asperiores architecto corrupti provident consequatur beatae ab ad quasi officiis blanditiis itaque accusantium ea illo, magni explicabo quod. Neque, tenetur accusantium corrupti optio rem inventore reiciendis, earum repellendus consequuntur autem omnis explicabo officiis sequi, odio cumque expedita eius blanditiis? Totam esse a, quasi autem expedita fugiat omnis tempore ratione minima consequatur doloremque temporibus sint vitae qui facere laborum quas, aut, eum perferendis officiis hic voluptatum repellendus quae. Deserunt quae doloremque minus enim tempore animi molestiae veritatis vitae, sunt delectus tempora laboriosam culpa, quo illum, accusamus omnis odio? Laborum veniam dolorum neque, voluptatem nam dolorem quibusdam facilis vero similique nemo odit fuga sapiente dignissimos eligendi! Officiis, obcaecati delectus a consequuntur architecto quam illo quaerat odio, inventore aspernatur laudantium impedit, rem est ullam hic repellendus quo odit veniam eveniet dicta assumenda quae. Delectus nisi culpa iste ipsam pariatur nihil, fugiat saepe animi ut velit voluptatum aliquam eos neque praesentium ipsa rem quia earum. Consequatur vitae dicta, vero fuga ad soluta adipisci praesentium recusandae quia, est voluptatibus asperiores rem numquam odio illo atque fugit delectus nulla saepe molestiae. Reiciendis non esse dolorem maiores, quae a nobis, ipsa cumque pariatur dolore provident tenetur, similique quam. Ex iste velit repellendus doloremque consequatur, libero ad autem dignissimos sed quae, eius beatae minus illo sapiente, nobis odio quis nulla molestiae quasi ducimus voluptatibus aperiam.
+    </div>
+        <div class="mycon">
+        this is another container
+    </div>
+</body>
+</html>

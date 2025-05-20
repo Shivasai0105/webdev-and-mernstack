@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Lists</title>
+    <style>
+        ul{
+            display: flex;
+        }
+        nav ul li {
+            /*display: flex; /* Makes the list items flex containers. */
+            list-style: none;
+            padding: 23px;
+            /* 
+            list-style: A shorthand property to set all list-style properties in one declaration.
+            It can include list-style-type, list-style-position, and list-style-image.
+            */
+
+            /*list-style: devanagari; /* Sets the bullet style to Devanagari numerals (like १, २, ३). 
+                                       Not all browsers support this well. */
+
+            /*list-style-type: "🔥";  /* Overrides the list-style-type with a custom string/icon.
+                                       Note: Using a string like "🔥" for list-style-type only works in modern browsers. 
+                                       It may not be supported everywhere. */
+
+            /* background-color: yellow; */ /* Uncomment this to apply a background color to list items. */
+
+            /* list-style-position: inside; */ /* Places the bullet inside the list item's box, 
+                                                  so text wraps under the bullet. 
+                                                  Default is 'outside'. */
+
+           /* border: 2px solid black; /* Adds a black border around each <li> item. */
+
+            /*
+            list-style: disc inside url(...); 
+            This is a shorthand way to set:
+            - list-style-type: disc
+            - list-style-position: inside
+            - list-style-image: url(...)
+            */
+
+            /*
+            list-style-image: url("https://user-images.githubusercontent.com/14011726/94132137-7d4fc100-fe7c-11ea-8512-69f90cb65e48.gif"); 
+            This replaces the bullet with a custom image (in this case, a dancing dot GIF).
+            */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Home</li>     <!-- List item 1 -->
+            <li>About</li>    <!-- List item 2 -->
+            <li>Contact</li>  <!-- List item 3 -->
+        </ul>
+    </nav>
+</body>
+</html>

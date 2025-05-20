@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadows and outlines in css</title>
+    <style>
+        .box{
+            border: 2px solid blue;
+            padding: 45px;
+            box-shadow: 5px 15px 5px black ;
+            border-radius:2px;
+        }
+        /* syntax of box shadow: h-offset v-offset blur spread color inset or outset */
+        /* h-offset: horizontal offset of the shadow */
+        /* v-offset: vertical offset of the shadow */
+        /* blur: how much the shadow is blurred */
+        /* spread: how much the shadow is spread */
+        /* color: color of the shadow */
+        /* inset: if the shadow is inset */
+        /* outset: if the shadow is outset */
+        /* inset is used to create an inner shadow */
+        /* outset is used to create an outer shadow */
+        .ele{
+            text-shadow: 2px 2px 2px black;
+        }
+        .border-box {
+      border: 4px solid red;
+      padding: 10px;
+      margin: 20px;
+    }
+
+    .outline-box {
+      outline: 4px solid blue;
+      padding: 10px;
+      margin: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        this is a box
+    </div>
+    <h1 class="ele">
+        this is a heading tag using the text shadow property
+    </h1>
+    <div class="border-box">This box has a <strong>red border</strong>.</div>
+  <div class="outline-box">This box has a <strong>blue outline</strong>.</div>
+  <!-- with out line offset property we can change the size of the outline bt cant do with the border-->
+   <!-- The border and outline properties in CSS both draw lines around elements, but they behave differently.
+     A border is part of the element’s box model, meaning it affects the layout and occupies space around the content.
+     It can be styled with properties like border-radius, which allows rounded corners.
+     On the other hand, an outline is drawn outside the element’s border edge and does not affect the element’s size or layout.
+     Unlike borders, outlines cannot have rounded corners and do not take up space.
+     Outlines are often used for accessibility and focus indication, while borders are more commonly used for visual design and spacing control. -->
+</body>
+</html>

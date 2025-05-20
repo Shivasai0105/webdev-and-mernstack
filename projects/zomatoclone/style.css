@@ -1,0 +1,193 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0; /* Light grey */
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: #e23744; /* Zomato red */
+    color: white;
+}
+
+header .logo img {
+    height: 35px; /* Smaller logo in navbar */
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+    color: #ffd6d6;
+}
+
+/* Hero Section */
+main section:first-of-type {
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 10px;
+    background-image: url('img/bg.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+    margin: 40px 20px;
+}
+
+main section:first-of-type::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay for better text contrast */
+    border-radius: 10px;
+    z-index: 0;
+}
+
+main section:first-of-type * {
+    position: relative;
+    z-index: 1;
+}
+
+main section:first-of-type .logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+main section:first-of-type h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+main section:first-of-type p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+main section:first-of-type input[type="text"] {
+    width: 60%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Second Section (Why Choose Us) */
+main section:nth-of-type(2) {
+    background-color: #ffffff;
+    margin: 40px 20px;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+main section:nth-of-type(2) h2 {
+    color: #e23744;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+main section:nth-of-type(2) p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+main section:nth-of-type(2) ul {
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+main section:nth-of-type(2) ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #e23744;
+    color: white;
+    font-size: 14px;
+}
+.features {
+    text-align: center;
+    margin-top: 40px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.features h2 {
+    font-size: 28px;
+    color: #e23744;
+    margin-bottom: 10px;
+}
+
+.features p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.card {
+    background-color: #fefefe;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: 240px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(226, 55, 68, 0.15);
+}
+
+.card .icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #333;
+}

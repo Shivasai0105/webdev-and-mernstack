@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>specifity</title>
+    <style>
+        /*specifity: 
+        priority of css rules
+        1. inline styles
+        2. id selectors
+        3. class selectors or attribute selectors
+        4. element selectors
+        5. universal selector
+        6. pseudo-classes
+        7. pseudo-elements
+        9. combinators
+        10. descendant selectors
+        11. child selectors
+        12. adjacent sibling selectors
+        13. general sibling selectors 
+        inline styles > id > class > element>universal selector
+        */
+        h1{
+            color:aqua;
+        }
+        .yellow{
+            color: yellow;
+        }
+        .cred{
+            color: red;
+        }
+        .cpurple{
+            color: purple !important; /* this will override all other rules  because it has important keyword which has the highest priority*/
+        } 
+        /* the last one has the highest priority */
+    </style>
+</head>
+<body>
+    <div >
+
+<h1 class="yellow cred cpurple">this is css specifity</h1>
+    </div>
+    <!-- 
+    cascade algorithm:
+    1.position and order of appearance : the order in which your css rules appear in the stylesheet matters.
+    2. specificity: the more specific a selector is, the higher its priority.
+    3. importance: the !important rule can override all other rules, but it should be used sparingly.
+    4. inheritance: some properties are inherited from parent elements to child elements.
+    5. browser default styles: browsers have their own default styles for elements, which can affect how your styles are applied.
+     -->
+</body>
+</html>
