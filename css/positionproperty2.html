@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <title>CSS Position Property Demo</title>
   <style>
+    /* Apply a basic font and large height to enable scrolling */
     body {
       font-family: Arial, sans-serif;
-      height: 2000px; /* So we can scroll */
+      height: 2000px; /* Allows us to scroll to test sticky and fixed */
     }
 
+    /* Common styles for all boxes */
     .box {
       width: 200px;
       height: 100px;
@@ -18,73 +20,90 @@
       font-weight: bold;
     }
 
+    /* 1. Static Position (Default) */
     .static-box {
       background-color: gray;
-      position: static; /* Default, this is optional */
+      position: static; /* Default position; follows normal HTML flow */
     }
 
+    /* 2. Relative Position */
     .relative-box {
       background-color: green;
-      position: relative;
-      top: 20px; /* Moves down from its normal place */
-      left: 30px; /* Moves right from its normal place */
+      position: relative; /* Positioned relative to its original location */
+      top: 20px;  /* Moves 20px downward from its normal spot */
+      left: 30px; /* Moves 30px to the right from its normal spot */
     }
 
+    /* Container for absolute box (must be relative for correct positioning) */
     .absolute-container {
-      position: relative;
-      border: 2px dashed red;
+      position: relative; /* Important: makes this container the reference point */
+      border: 2px dashed red; /* Visual border to show container */
       height: 200px;
     }
 
+    /* 3. Absolute Position */
     .absolute-box {
       background-color: blue;
-      position: absolute;
-      top: 10px;
-      left: 10px;
+      position: absolute; /* Positioned relative to the nearest ancestor with position set */
+      top: 10px;  /* 10px from the top of the .absolute-container */
+      left: 10px; /* 10px from the left of the .absolute-container */
     }
 
+    /* 4. Fixed Position */
     .fixed-box {
       background-color: orange;
-      position: fixed;
-      top: 20px;
-      right: 20px;
+      position: fixed; /* Sticks to a fixed position in the browser viewport */
+      top: 20px;  /* 20px from the top of the browser window */
+      right: 20px; /* 20px from the right of the browser window */
     }
 
+    /* 5. Sticky Position */
     .sticky-box {
       background-color: purple;
-      position: sticky;
-      top: 0; /* It will stick to top when scrolled */
+      position: sticky; /* Behaves like relative until it reaches the top, then becomes fixed */
+      top: 0; /* It will "stick" when it touches the top of the viewport */
     }
   </style>
 </head>
 <body>
 
+  <!-- Section 1: Static Position -->
+  <!-- This element stays where it normally appears in the flow -->
   <h2>1. Static Position (Default)</h2>
   <div class="box static-box">
     Static Box<br>
     (Stays in normal flow)
   </div>
 
+  <!-- Section 2: Relative Position -->
+  <!-- This element moves from its original location without affecting others -->
   <h2>2. Relative Position</h2>
   <div class="box relative-box">
     Relative Box<br>
     (Moved from its normal spot)
   </div>
 
+  <!-- Section 3: Absolute Position -->
+  <!-- The container is relative so that the absolute box is placed inside it -->
   <h2>3. Absolute Position (Inside Relative Container)</h2>
   <div class="absolute-container">
+    <!-- This box is absolutely positioned 10px from top and left inside the red container -->
     <div class="box absolute-box">
       Absolute Box<br>
       (Placed inside red border)
     </div>
   </div>
 
+  <!-- Section 4: Fixed Position -->
+  <!-- This box stays in place even when scrolling -->
   <h2>4. Fixed Position</h2>
   <div class="box fixed-box">
     Fixed Box<br>
     (Sticks to screen corner)
   </div>
 
+  <!-- Section 5: Sticky Position -->
+  <!-- This box scrolls with the page until it reaches the top, then sticks -->
   <h2>5. Sticky Position</h2>
   <div class="box sticky-box">
     Sticky Box<br>
@@ -93,3 +112,10 @@
 
 </body>
 </html>
+<!-- This code demonstrates the CSS position property with examples of static, relative, absolute, fixed, and sticky positioning. -->
+<!-- The boxes are styled with different colors and positions to illustrate how each type behaves in the document flow. -->
+<!-- The static box remains in its normal position, the relative box moves from its original spot, the absolute box is positioned within a relative container, the fixed box stays in a fixed position on the screen, and the sticky box sticks to the top when scrolling. -->
+<!-- The code includes headings and descriptions for each section to clarify the purpose of each box. -->
+<!-- The layout is designed to be simple and easy to understand, making it suitable for learning about CSS positioning. -->
+<!-- The example also includes a fixed box that remains in the same position on the screen while scrolling, and a sticky box that sticks to the top of the viewport when scrolled to. -->
+<!-- The CSS styles are applied to demonstrate the different positioning methods clearly. -->
