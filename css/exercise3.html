@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-        div{
+        .card{
             height: 600px;
             width: 300px;
             border: 2px solid black;
@@ -43,29 +43,35 @@
 
 
         }
-        span{
-            background-color: skyblue;
-            padding: 5px;
-            border-radius: 25px;
-            margin-top: 10px;
-            display: inline-block;
+        .btn{
+            /* margin-top: 10px; */
             text-align: center;
-            position: relative;
-            left: 100px;
-            top: 10px;
+        }
+        .btn > button{
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: darkturquoise;
+            border-radius: 50px;
+            border:none;
+            
 
         }
+        
+        
     </style>
 </head>
 <body>
-    <div>
+    <div class="card">
         <img src="https://tse2.mm.bing.net/th?id=OIP.oBQbv3ppTXRXuoW2gvDhzQHaJZ&pid=Api&P=0&h=220" alt="this is an image">
         <p class="circle">nature</p>
         <p class="circle">mountain</p>
         <h2>NATURE</h2>
         <p>Nature is the natural, physical, or material world or universe. "Nature" refers to the phenomena of the physical world collectively, including plants, animals, the landscape, and other features and products of the earth, as opposed to humans or human creations.</p>
         <p>Nature is often referred to as the "great outdoors" and is a source of inspiration, beauty, and wonder for many people. It encompasses everything from the smallest microorganisms to the largest ecosystems, and it plays a crucial role in sustaining life on Earth.</p>
-        <span>Read More</span>
+        <div class="btn">
+            <button>read-more</button>
+        </div>
     </div>
 </body>
 </html>
