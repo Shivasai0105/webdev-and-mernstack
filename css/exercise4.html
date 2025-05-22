@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar using the variables in css</title>
+    <style>
+        /* Create a multicolor navbar using CSS Variables & Global variables */
+        :root{
+            --color1: #c67474;
+            --color2: #69c369;
+            --color3: #7c7cd2;
+            --color4: #cfcf72;
+            --color5: #ad86ad;
+            --color6: #91c0c0;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            
+        }
+        body{
+            background-color: #c3c3c3;
+        }
+        .navbar{
+            display: flex;
+            margin: 10px;
+            padding: 10px;
+            list-style: none;
+            
+        }
+        .navbar li{
+            padding:10px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: var(--color1);
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+        }
+        .navbar li:hover{
+            background-color: var(--color2);
+            color: black;
+        }
+        .navbar li:nth-child(1){
+            background-color: var(--color1);
+        }
+        .navbar li:nth-child(2){
+            background-color: var(--color2);
+        }
+        .navbar li:nth-child(3){
+            background-color: var(--color3);
+        }
+        .navbar li:nth-child(4){
+            background-color: var(--color4);
+        }
+        .navbar li:nth-child(5){
+            background-color: var(--color5);
+        }
+        div{
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="navbar">
+            <li>
+                Home
+            </li>
+            <li>
+                products
+            </li>
+            <li>
+                services
+            </li>
+            <li>
+                contact
+            </li>
+            <li>
+                about
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
