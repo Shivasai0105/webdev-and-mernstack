@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Media Query Features</title>
+  <style>
+    /* Default styles */
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .box {
+      padding: 20px;
+      margin: 10px;
+      text-align: center;
+      background-color: lightgray;
+      border: 2px solid #333;
+    }
+
+    .hover-box {
+      background-color: coral;
+    }
+
+    .no-print {
+      background-color: tomato;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* max-width: Mobile view */
+    @media (max-width: 600px) {
+      body {
+        background-color: #e0f7fa;
+        color: #004d40;
+      }
+    }
+
+    /* min-width: Desktop view */
+    @media (min-width: 1000px) {
+      body {
+        background-color: #ede7f6;
+        color: #311b92;
+      }
+    }
+
+    /* Orientation: Landscape */
+    @media (orientation: landscape) {
+      .orientation-box {
+        background-color: lightgreen;
+      }
+    }
+
+    /* Orientation: Portrait */
+    @media (orientation: portrait) {
+      .orientation-box {
+        background-color: lightpink;
+      }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: white;
+      }
+
+      .box {
+        background-color: #333;
+        border-color: white;
+      }
+    }
+
+    /* Hover-capable devices */
+    @media (hover: hover) {
+      .hover-box:hover {
+        background-color: darkorange;
+        cursor: pointer;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        font-size: 12pt;
+        background-color: white;
+        color: black;
+      }
+
+      .no-print {
+        display: none;
+      }
+
+      .box {
+        border: 1px solid black;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Media Query Demo – All Features</h1>
+
+  <div class="box">Resize the browser window to see width-based changes.</div>
+
+  <div class="box orientation-box">Change orientation (rotate phone or emulator).</div>
+
+  <div class="box hover-box">Hover over me (only works on devices with hover).</div>
+
+  <div class="box no-print">This box will be hidden when you print the page.</div>
+
+  <div class="box">Switch system theme to dark mode to see dark color scheme effect.</div>
+</body>
+</html>
