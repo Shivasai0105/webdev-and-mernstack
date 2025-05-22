@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS media queries</title>
+</head>
+<style>
+    body{
+        background-color: red;
+    }
+    /* media queries in css */
+    /* media queries are used to apply styles based on the viewport size or device characteristics. */
+    /* They allow you to create responsive designs that adapt to different screen sizes. */
+    /* You can use media queries to change styles for different devices, such as mobile phones, tablets, and desktops. */
+    /* The @media rule is used to define media queries. */
+    /* The syntax is as follows: */
+    /* @media media-type and (condition) { */
+    /*     /* styles to be applied */
+    /* } */
+    /* The media-type can be screen, print, or all. */
+    /* The condition can be min-width, max-width, min-height, max-height, orientation, etc. */
+    /* The styles inside the media query will only be applied if the condition is met. */
+    /* For example, to change the background color of the body to blue when the viewport width is less than 600px: */
+    @media only screen and (max-width: 455px) { /* here we can use min-width */
+        body{
+            background-color: blue;
+        }
+    
+    .boxes{
+        flex-direction: column;
+    }
+    }
+    /* @media not|only mediatype and 
+    (expressions){
+    css-code;
+    } */
+    /* The not keyword negates the media query, meaning the styles will be applied if the condition is not met. */
+    /* The only keyword is used to apply styles only if the media query matches. */
+    /* The expressions can be combined using and, or, and not. */
+    /* For example, to change the background color of the body to green when the viewport width is between 600px and 900px: */
+    .boxes{
+        display: flex;
+    }
+    .box{
+        width: 344px;
+        height: 344px;
+        background-color: steelblue;
+        margin: 3px;
+        padding: 3px;
+    }
+</style>
+<body>
+    <div>
+        my body is red
+    </div>
+    <div class="boxes">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
