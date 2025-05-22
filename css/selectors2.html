@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More on Selectors</title>
+    <style>
+        
+        .box::first-line { /* Selects the first line of text in the box */
+            color: red;
+        }
+        .boxes *{ /* Selects all elements inside the boxes class */
+            color: rgb(51, 55, 55);
+            border: 2px solid black; 
+            padding: 10px;
+            
+        }
+        p,a, .box, [data-color="primary"] { /* Selects elements with a specific data attribute */
+            margin-top: 45px; /* Adds margin to the top of the element */
+            
+        }
+        .box:nth-last-child(2){
+            background-color: blue; /* Selects the second to last child of the box class */
+        }
+        .box:nth-of-child(odd){
+            background-color: green; /* Selects the second child of the box class */
+        }
+        .boxes::before{
+            content: "this is added before the boxes class using the css before selector dynamically "; /* Adds content before the boxes class dynamically */
+        }
+        .boxes::after{
+            content: "this is added after the boxes class using the css after selector dynamically"; /* Adds content after the boxes class dynamically */
+        }
+        ::selection{
+            background-color: yellow; /* Changes the background color of selected text */
+            color: black; /* Changes the text color of selected text */
+        }
+        .box::first-letter{
+            font-size: 2em; /* Changes the font size of the first letter of the box class */
+            color:yellow; /* Changes the color of the first letter of the box class */
+        }
+        input::placeholder{
+            color: rgb(161, 152, 152); /* Changes the color of the placeholder text */
+            font-size: 20px; /* Changes the font size of the placeholder text */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxes">
+        <div data-color="primary" class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim soluta odio laudantium nostrum!
+            Delectus, dolor repudiandae consequuntur aut quis similique reiciendis explicabo maiores aspernatur, nemo
+            magni laboriosam cumque, minima assumenda? Rem itaque suscipit dolorem corrupti vel laboriosam. Odio quis
+            hic totam, laborum numquam veniam animi! Dolorum quia et aliquid libero.</div>
+        <div class="box">hey i am a box</div>
+        <div class="box">hey i am a box</div>
+        <input type="text"placeholder="type your name">
+    </div>
+</body>
+
+</html>
