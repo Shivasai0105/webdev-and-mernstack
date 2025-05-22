@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables</title>
+    <style>
+        /* CSS Variables */
+        /* CSS variables are defined using the -- prefix and can be used to store values that can be reused throughout the stylesheet. */
+        
+        :root{
+            --color:blue;
+            --seccolor:rgb(106, 131, 232);
+            --defpad:23px; 
+        }
+        /* root element is used to declare the global variables */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+.nav{
+    background-color: var(--color);
+}
+ul li{
+    --color:rgb(232, 198, 106); /*this will take as the local variable*/
+    background-color: var(--color); /* this will override the global variable */
+    list-style: none;
+    padding: var(--defpad); /* this will take the global variable and default value of 23px */
+    border: 2px solid var(--seccolor); /* this will take the global variable */
+}
+ul{
+    display: flex;
+}
+.container{
+    background-color: var(--seccolor);
+    color: var(--bgcolor, white); /* this will take the default value of white as we dont have the --bgcolor variable*/
+}
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut voluptas impedit veritatis, quam voluptatem sequi
+        cum accusantium suscipit porro, ea quidem quos voluptatum deserunt autem nostrum alias dolores fugit iusto
+        quibusdam quis mollitia nulla id nihil asperiores. Laborum excepturi odio quod odit blanditiis! Sint,
+        voluptatibus?
+    </div>
+</body>
+
+</html>
