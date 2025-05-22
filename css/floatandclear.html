@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float and clear</title>
+</head>
+<style>
+    /* avoid using the float property as it is deprecated and use flex or grid instead */
+    /* avoid using the float property as it is deprecated and use flex or grid instead */ 
+    /* float in CSS
+Definition:
+The float property is used to position elements to the left or right, allowing text or inline elements to wrap around them.
+
+✅ Key Points:
+float: left; → element floats to the left of its container.
+
+float: right; → element floats to the right.
+
+float: none; → default, element stays in normal flow.
+
+Commonly used for layouts, images, sidebars, etc.*/
+
+/*clear in CSS
+Definition:
+The clear property is used to prevent elements from wrapping around floated elements.
+
+✅ Key Points:
+clear: left; → doesn't allow floating elements on the left.
+
+clear: right; → doesn't allow floating elements on the right.
+
+clear: both; → clears both sides, pushes the element below any floats.
+
+Often used after floated elements to fix layout issues. */
+    .cards {
+        border: 2px solid black;
+        display: flow-root; /* this will make the parent element to clear the float */
+        /* display: flex; */ /* this will make the parent element to clear the float */
+    }
+
+    img {
+        float: right; /* this will make the image float to the right */
+    }
+
+    .card {
+        border: 2px solid red;
+    }
+    .card:nth-child(3) {
+        clear: right; /* this will clear the float and make the card 3 to come below the image */
+    }
+</style>
+
+<body>
+    <div class="cards">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.gINH2jW2FaWbmG-fIUgk2wHaEK&pid=Api&P=0&h=220" alt="" width="230">
+        <div class="card">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque aut repellat dicta eaque maxime ullam
+                voluptatibus laudantium quas placeat deleniti impedit corrupti dolorem a earum voluptatem doloremque,
+                molestiae aliquid nostrum? Quidem iure reiciendis sequi minus.
+            </p>
+        </div>
+        <div class="card">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque amet reiciendis, earum nesciunt alias
+                voluptatum iusto! Rem voluptatem, iure cupiditate eligendi harum vero in quam cumque similique aut
+                accusamus nobis modi ullam libero ea, quae dignissimos! Aliquid iure quibusdam neque laboriosam ea
+                facilis inventore quia. Omnis consectetur eaque voluptate explicabo fuga! Veritatis illo reiciendis nam
+                quos provident animi? Labore nostrum iusto, et quasi beatae quod, possimus tempore fugiat magnam ratione
+                dignissimos soluta rerum maiores corporis perferendis qui. Nihil minus aut adipisci. Ab obcaecati nam
+                autem inventore ut aut deserunt cumque, repudiandae voluptate mollitia cum voluptatibus molestias
+                recusandae repellat exercitationem tempora temporibus repellendus numquam. Laboriosam, placeat? Rerum ea
+                iusto, exercitationem cum porro repellendus praesentium. Consequuntur corporis eum voluptas, animi
+                doloremque, laborum facere eius sed blanditiis expedita molestiae enim quam repellat dolorum repudiandae
+                optio illo architecto quo, aspernatur quidem? Odio labore, totam earum expedita, incidunt ab cum
+                doloribus iure aperiam, fuga at impedit sapiente rerum eum. Facilis, debitis molestiae aspernatur, optio
+                eius ullam quae quaerat quibusdam odit perferendis corporis cum at, asperiores iste earum! Voluptatem
+                culpa maxime molestias cumque eos praesentium, temporibus voluptatum consequatur quos expedita mollitia,
+                voluptatibus aliquid quisquam fuga explicabo accusamus reprehenderit vel hic in atque nulla repellendus
+                minima laudantium? Minima reprehenderit suscipit fugit illo. Incidunt enim vero delectus mollitia ut, ea
+                libero blanditiis impedit porro eum quae necessitatibus tempore, molestias possimus animi quam id ullam
+                natus iure deserunt quo eveniet! Veniam corporis aliquam praesentium quas, nulla eaque similique
+                necessitatibus adipisci repellat laboriosam, qui facilis fugiat officiis? Hic, iusto nisi voluptatum
+                aperiam mollitia commodi! Aut aliquam ullam praesentium hic voluptates amet, commodi iusto molestias,
+                dolorum earum iste dolor quas! Ratione, ad nostrum dolor dignissimos veritatis ullam ipsam odio possimus
+                accusamus, suscipit voluptatibus veniam necessitatibus amet, laudantium natus dicta? Delectus accusamus
+                illo recusandae deserunt ipsa vel quae, iure natus dolorum facilis!
+            </p>
+        </div>
+        <div class="card">card 3</div>
+    </div>
+</body>
+
+</html>
