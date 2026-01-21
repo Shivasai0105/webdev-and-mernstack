@@ -1,0 +1,254 @@
+# DAY 01 — JavaScript Non-Primitives & Type Handling (Revision Notes)
+
+## Scope of Today’s Learning
+
+✔ Objects
+✔ Arrays
+✔ Reference behavior
+✔ const with objects & arrays
+✔ Dot vs Bracket notation
+✔ Implicit type coercion
+✔ Explicit type conversion
+✔ NaN, null, undefined
+✔ Dynamic typing (conceptual)
+
+---
+
+1. NON-PRIMITIVE DATA TYPES
+
+---
+
+In JavaScript, non-primitive data types are stored by reference.
+The most common non-primitives are:
+
+* Objects
+* Arrays
+
+Their values live in memory (heap), and variables store references.
+
+---
+
+2. OBJECTS
+
+---
+
+Creating an object:
+
+const user = {
+firstName: "Alex",
+isLoggedIn: true
+};
+
+Checking type:
+
+typeof user; // "object"
+
+---
+
+3. OBJECT MUTABILITY WITH const
+
+---
+
+const protects the reference, NOT the contents.
+
+Allowed:
+
+user.firstName = "John";
+user.lastName = "Doe";
+
+Not allowed:
+
+user = {}; // ❌ reassignment not allowed
+
+Reason:
+
+* Object reference stays the same
+* Properties inside the object are mutable
+
+---
+
+4. ACCESSING OBJECT PROPERTIES
+
+---
+
+A. Dot Notation (most common):
+
+user.firstName; // "John"
+
+Limitations:
+
+* Cannot be used if key has spaces
+* Cannot be used with dynamic keys
+
+B. Bracket Notation (always works):
+
+user["full name"] = "John Doe";
+console.log(user["full name"]); // "John Doe"
+
+Invalid:
+
+user.full name; // ❌ syntax error
+
+---
+
+5. ARRAYS
+
+---
+
+Arrays are ordered collections stored by reference.
+
+Example:
+
+const heroes = ["IronMan", "Thor", "Hulk"];
+
+Checking type:
+
+typeof heroes; // "object"
+
+Accessing elements:
+
+heroes[0]; // "IronMan"
+heroes[heroes.length - 1]; // "Hulk"
+
+Arrays can hold mixed data types:
+
+["Alex", true, 10]
+
+---
+
+6. OBJECT vs ARRAY (CORE DIFFERENCE)
+
+---
+
+Object:
+
+* Accessed by named keys
+* Order does not matter
+* Best for structured data
+
+Array:
+
+* Accessed by index
+* Order matters
+* Best for lists and sequences
+
+---
+
+7. REFERENCE BEHAVIOR
+
+---
+
+Objects & arrays are copied by reference.
+
+Object example:
+
+const obj1 = { value: 10 };
+const obj2 = obj1;
+
+obj2.value = 20;
+console.log(obj1.value); // 20
+
+Array example:
+
+const arr1 = [1, 2];
+const arr2 = arr1;
+
+arr2.push(3);
+console.log(arr1); // [1, 2, 3]
+
+---
+
+8. IMPLICIT TYPE COERCION
+
+---
+
+JavaScript automatically converts types during operations.
+
+String + Number:
+
+1 + "1";   // "11"
+"1" + 1;   // "11"
+
+Boolean + Number:
+
+true + 1;   // 2
+false + 1;  // 1
+
+Rules:
+
+* If one operand is a string → concatenation
+* true → 1, false → 0 in numeric context
+
+---
+
+9. EXPLICIT TYPE CONVERSION
+
+---
+
+Using Number():
+
+Number("2");      // 2
+Number("2ABC");  // NaN
+
+Type check:
+
+typeof Number("2ABC"); // "number"
+
+---
+
+10. NaN (Not a Number)
+
+---
+
+NaN represents an invalid numeric result.
+
+Example:
+
+let x = Number("hello");
+console.log(x);        // NaN
+console.log(typeof x); // "number"
+
+NaN is a numeric type but means "invalid number".
+
+---
+
+11. null vs undefined (Conversion)
+
+---
+
+Number(null);      // 0
+Number(undefined); // NaN
+
+Meaning:
+
+* null → intentional empty value
+* undefined → missing value
+
+---
+
+12. DYNAMIC TYPING
+
+---
+
+JavaScript is dynamically typed:
+
+* Types are decided at runtime
+* Variables can change type
+* No explicit type declarations
+
+This flexibility causes implicit type coercion,
+which can be powerful but error-prone if unchecked.
+
+---
+
+## REVISION TAKEAWAYS
+
+✔ Objects & arrays are reference types
+✔ const does not make objects immutable
+✔ Dot vs bracket notation matters
+✔ Arrays are objects
+✔ Type coercion exists (implicit & explicit)
+✔ NaN is a number
+✔ JavaScript is dynamically typed
+
+=================================================
