@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Box Model Example</title>
+    <style>
+      /* General body styles for better readability */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      /* This is the base class for our demonstration boxes. */
+      .box-model-demo {
+        width: 300px; /* The width of the content area */
+        height: 200px; /* The height of the content area */
+        padding: 20px; /* Space between the content and the border */
+        border: 5px solid #333; /* The border around the padding */
+        margin: 30px; /* Space outside the border, separating it from other elements */
+        background-color: #f0f0f0; /* Background color of the content area */
+      }
+
+      /* By default, elements use 'content-box'.
+         The total width = width + padding (left & right) + border (left & right)
+         The total height = height + padding (top & bottom) + border (top & bottom) */
+      .content-box {
+        box-sizing: content-box;
+        background-color: #ffcccc;
+      }
+
+      /* With 'border-box', the padding and border are included in the element's total width and height.
+         The total width = width (which now includes padding and border)
+         The total height = height (which now includes padding and border) */
+      .border-box {
+        box-sizing: border-box;
+        background-color: #ccffcc;
+      }
+
+      .box-model-demo p {
+        margin: 0;
+      }
+
+      .highlight {
+        background-color: yellow;
+        display: inline-block;
+      }
+
+      .inline-example {
+        background-color: #cce6ff;
+        padding: 10px; /* Padding is applied */
+        margin: 10px; /* Margin is applied */
+        /* NOTE: Inline elements do not respect the 'width' and 'height' properties.
+           They only take up the space their content needs. */
+        width: 200px;
+        height: 100px;
+      }
+
+      /* Block elements start on a new line and take up the full width available.
+         They respect width, height, margin, and padding. */
+      .block-example {
+        background-color: #ffccff;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Box Model Example</h1>
+
+    <h2>Content-box (Default)</h2>
+    <div class="box-model-demo content-box">
+      <p>This is a content-box element.</p>
+      <p>Width: 300px + 40px (padding) + 10px (border) = 350px</p>
+      <p>Height: 200px + 40px (padding) + 10px (border) = 250px</p>
+    </div>
+
+    <h2>Border-box</h2>
+    <div class="box-model-demo border-box">
+      <p>This is a border-box element.</p>
+      <p>Width: 300px (including padding and border)</p>
+      <p>Height: 200px (including padding and border)</p>
+    </div>
+
+    <h2>Inline vs Block Elements</h2>
+    <p>
+      This is a paragraph with an
+      <span class="inline-example">inline element</span> inside. Inline elements
+      only take up as much width as necessary and allow other elements next to
+      them.
+    </p>
+
+    <div class="block-example">
+      This is a block-level element. It takes up the full width available and
+      creates a new line before and after it.
+    </div>
+
+    <h2>Box Model Components</h2>
+    <p>The box model consists of:</p>
+    <ul>
+      <li>
+        <span class="highlight">Content</span>: The actual content of the box,
+        where text and images appear
+      </li>
+      <li>
+        <span class="highlight">Padding</span>: Clears an area around the
+        content (inside the border)
+      </li>
+      <li>
+        <span class="highlight">Border</span>: A border that goes around the
+        padding and content
+      </li>
+      <li>
+        <span class="highlight">Margin</span>: Clears an area outside the border
+      </li>
+    </ul>
+  </body>
+</html>

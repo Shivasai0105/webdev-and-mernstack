@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+    
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: rgb(192, 185, 185);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .loginPage {
+        height: 400px;
+        width: 400px;
+        display: flex;
+        background-color: lightblue;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    input {
+        margin: 10px;
+        width: 80%;
+        box-sizing: border-box;
+    }
+    .button-group {
+        display: flex;
+        gap: 10px;
+        width: 80%;
+        justify-content: center;
+    }
+        
+    </style>
+</head>
+<body>
+    <div class="loginPage">
+        <h2>Login</h2>
+        <form action="">
+            <!-- <label for="email-id">Email</label> -->
+            <input type="email" name="email-id" id="" placeholder="email">
+            <!-- <label for="password">Password</label> -->
+            <input type="password" name="password" id="" placeholder="password">
+            <!-- <button type="submit">Submit</button>
+              -->
+              <input type="checkbox" name="check" id="">
+              <label for="check">remember me</label>
+            <div class="button-group">
+            <input type="button" value="Submit" class="submit">
+            <input type="button" value="SignUp" class="submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

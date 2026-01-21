@@ -3,27 +3,578 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AVL Tree Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: lightblue;
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s;
         }
-        div{
-            background-color: lightblue;
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid black;
+        /* Custom CSS for Node drawing and Canvas */
+        #avlCanvas {
+            background-color: #1e293b; /* Slate-800 for dark background */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        #codeReference pre {
+            background-color: #1f2937; /* Gray-800 */
+            color: #d1d5db; /* Gray-300 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Allows line breaks for readability */
         }
     </style>
 </head>
-<body>
-    <DIV>
-        this is a div tag
-    </DIV>
+<body class="bg-gray-900 text-white min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-indigo-400 mb-2">AVL Tree Visualizer</h1>
+            <p class="text-gray-400">Insert nodes to observe automatic balancing rotations.</p>
+        </header>
+
+        <section id="controls" class="bg-gray-800 p-4 rounded-xl shadow-lg mb-8">
+            <div class="flex flex-col sm:flex-row gap-4 items-center">
+                <input type="number" id="nodeInput" placeholder="Enter number (0-999)" min="0" max="999"
+                       class="flex-grow p-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                <button id="insertBtn"
+                        class="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-150 transform hover:scale-[1.02]">
+                    Insert Node
+                </button>
+                <button id="resetBtn"
+                        class="w-full sm:w-auto px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition duration-150 transform hover:scale-[1.02]">
+                    Reset
+                </button>
+            </div>
+        </section>
+
+        <section id="status" class="bg-gray-700 p-4 rounded-xl shadow-inner mb-8">
+            <h2 class="text-xl font-semibold mb-2 text-indigo-300">Status & Balance</h2>
+            <p id="statusMessage" class="text-gray-200">The tree is currently empty. Insert your first node!</p>
+        </section>
+
+        <section id="visualization" class="mb-8">
+            <canvas id="avlCanvas" width="800" height="400"></canvas>
+        </section>
+
+        <!-- New section for Java Code Reference -->
+        <section id="codeReference" class="bg-gray-800 p-4 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-2 text-green-400">Java Code Reference: <span id="codeTitle" class="text-gray-300">Insert</span></h2>
+            <pre id="javaCodeBlock">Loading Java Code...</pre>
+        </section>
+    </div>
+
+    <script type="module">
+        // Global variables for canvas and tree state
+        const canvas = document.getElementById('avlCanvas');
+        const ctx = canvas.getContext('2d');
+        const statusMessage = document.getElementById('statusMessage');
+        const codeBlock = document.getElementById('javaCodeBlock');
+        const codeTitle = document.getElementById('codeTitle');
+
+        let root = null;
+        const NODE_SIZE = 30;
+        const VERTICAL_SPACING = 70;
+        const HORIZONTAL_SPACING = 40;
+        
+        // Animation variables
+        const ANIMATION_DURATION = 500; // ms
+        let isAnimating = false;
+        let animationStartTime = null;
+
+        class AVLNode {
+            constructor(key) {
+                this.key = key;
+                this.left = null;
+                this.right = null;
+                this.height = 1;
+                // Visualization properties
+                this.x = 0;
+                this.y = 0;
+                // Animation properties
+                this.startX = 0;
+                this.startY = 0;
+                this.targetX = 0;
+                this.targetY = 0;
+                this.highlight = false;
+            }
+        }
+
+        /**
+         * AVL Utility Functions
+         */
+
+        function getHeight(node) {
+            return node ? node.height : 0;
+        }
+
+        function getBalance(node) {
+            return node ? getHeight(node.left) - getHeight(node.right) : 0;
+        }
+
+        function updateHeight(node) {
+            node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+        }
+
+        /**
+         * Java Code Snippets (Stored as JS constants)
+         */
+        const JAVA_SNIPPETS = {
+            INSERT: `
+public AVLNode insert(AVLNode node, int key) {
+    // 1. Standard BST Insertion
+    if (node == null) return new AVLNode(key);
+    if (key < node.key) {
+        node.left = insert(node.left, key);
+    } else if (key > node.key) {
+        node.right = insert(node.right, key);
+    } else return node; // Duplicate
+
+    // 2. Update height
+    node.height = 1 + Math.max(height(node.left), height(node.right));
+
+    // 3. Get balance factor
+    int balance = getBalance(node);
+
+    // 4. Perform Rotations (if unbalanced)
+    if (balance > 1 && key < node.left.key) {
+        return rightRotate(node); // LL Case
+    }
+    if (balance < -1 && key > node.right.key) {
+        return leftRotate(node); // RR Case
+    }
+    if (balance > 1 && key > node.left.key) {
+        node.left = leftRotate(node.left);
+        return rightRotate(node); // LR Case
+    }
+    if (balance < -1 && key < node.right.key) {
+        node.right = rightRotate(node.right);
+        return leftRotate(node); // RL Case
+    }
+    return node;
+}
+            `,
+            RIGHT_ROTATE: `
+// Used for LL and end of LR rotation
+private AVLNode rightRotate(AVLNode y) {
+    AVLNode x = y.left;
+    AVLNode T2 = x.right;
+
+    // Perform rotation
+    x.right = y;
+    y.left = T2;
+
+    // Update heights
+    y.height = 1 + Math.max(height(y.left), height(y.right));
+    x.height = 1 + Math.max(height(x.left), height(x.right));
+
+    return x; // Return new root
+}
+            `,
+            LEFT_ROTATE: `
+// Used for RR and end of RL rotation
+private AVLNode leftRotate(AVLNode x) {
+    AVLNode y = x.right;
+    AVLNode T2 = y.left;
+
+    // Perform rotation
+    y.left = x;
+    x.right = T2;
+
+    // Update heights
+    x.height = 1 + Math.max(height(x.left), height(x.right));
+    y.height = 1 + Math.max(height(y.left), height(y.right));
+
+    return y; // Return new root
+}
+            `
+        };
+
+        function updateCodeReference(type) {
+            switch (type) {
+                case 'LL':
+                case 'LR':
+                    codeTitle.textContent = 'Right Rotation (LL/LR)';
+                    codeBlock.textContent = JAVA_SNIPPETS.RIGHT_ROTATE.trim();
+                    break;
+                case 'RR':
+                case 'RL':
+                    codeTitle.textContent = 'Left Rotation (RR/RL)';
+                    codeBlock.textContent = JAVA_SNIPPETS.LEFT_ROTATE.trim();
+                    break;
+                default:
+                    codeTitle.textContent = 'Insert Logic';
+                    codeBlock.textContent = JAVA_SNIPPETS.INSERT.trim();
+                    break;
+            }
+        }
+
+        // Initialize code block on load
+        updateCodeReference('INSERT');
+
+        /**
+         * Rotations (JavaScript implementation remains the same)
+         */
+
+        function rightRotate(y) {
+            const x = y.left;
+            const T2 = x.right;
+            x.right = y;
+            y.left = T2;
+            updateHeight(y);
+            updateHeight(x);
+            return x;
+        }
+
+        function leftRotate(x) {
+            const y = x.right;
+            const T2 = y.left;
+            y.left = x;
+            x.right = T2;
+            updateHeight(x);
+            updateHeight(y);
+            return y;
+        }
+
+        /**
+         * Recursive Insertion and Balancing
+         */
+        function insert(node, key, steps) {
+            if (node === null) {
+                steps.push({ type: 'INSERTED', key: key });
+                return new AVLNode(key);
+            }
+
+            if (key < node.key) {
+                node.left = insert(node.left, key, steps);
+            } else if (key > node.key) {
+                node.right = insert(node.right, key, steps);
+            } else {
+                steps.push({ type: 'DUPLICATE', key: key });
+                return node;
+            }
+
+            updateHeight(node);
+            const balance = getBalance(node);
+
+            // Left Left Case (LL)
+            if (balance > 1 && key < node.left.key) {
+                steps.push({ type: 'LL_ROTATION', pivot: node.key, newRoot: node.left.key });
+                return rightRotate(node);
+            }
+
+            // Right Right Case (RR)
+            if (balance < -1 && key > node.right.key) {
+                steps.push({ type: 'RR_ROTATION', pivot: node.key, newRoot: node.right.key });
+                return leftRotate(node);
+            }
+
+            // Left Right Case (LR)
+            if (balance > 1 && key > node.left.key) {
+                const innerPivotKey = node.left.right ? node.left.right.key : null;
+                steps.push({ type: 'LR_ROTATION', pivot: node.key, innerPivot: innerPivotKey });
+                node.left = leftRotate(node.left);
+                return rightRotate(node);
+            }
+
+            // Right Left Case (RL)
+            if (balance < -1 && key < node.right.key) {
+                const innerPivotKey = node.right.left ? node.right.left.key : null;
+                steps.push({ type: 'RL_ROTATION', pivot: node.key, innerPivot: innerPivotKey });
+                node.right = rightRotate(node.right);
+                return leftRotate(node);
+            }
+
+            return node;
+        }
+
+
+        /**
+         * Visualization Drawing and Position Logic (Unchanged)
+         */
+
+        function resizeCanvas() {
+            const container = document.getElementById('visualization');
+            canvas.width = container.clientWidth;
+            canvas.height = Math.min(800, Math.max(400, container.clientHeight || 400));
+            if (root) {
+                const margin = 20;
+                setTargetPositions(root, 0, margin, canvas.width - margin);
+                function setImmediatePosition(node) {
+                    if (!node) return;
+                    node.x = node.targetX;
+                    node.y = node.targetY;
+                    setImmediatePosition(node.left);
+                    setImmediatePosition(node.right);
+                }
+                setImmediatePosition(root);
+                drawTree();
+            }
+        }
+
+        window.addEventListener('load', resizeCanvas);
+        window.addEventListener('resize', resizeCanvas);
+
+        function captureStartPositions(node) {
+            if (!node) return;
+            node.startX = node.x;
+            node.startY = node.y;
+            node.highlight = false;
+            captureStartPositions(node.left);
+            captureStartPositions(node.right);
+        }
+
+        function clearHighlights(node) {
+            if (!node) return;
+            node.highlight = false;
+            clearHighlights(node.left);
+            clearHighlights(node.right);
+        }
+        
+        function highlightNode(node, key) {
+            if (!node) return;
+            if (node.key === key) {
+                node.highlight = true;
+                return;
+            }
+            highlightNode(node.left, key);
+            highlightNode(node.right, key);
+        }
+
+        function setTargetPositions(node, depth, minX, maxX) {
+            if (!node) return;
+            node.targetX = (minX + maxX) / 2;
+            node.targetY = depth * VERTICAL_SPACING + NODE_SIZE;
+
+            if (node.left) {
+                setTargetPositions(node.left, depth + 1, minX, node.targetX - HORIZONTAL_SPACING);
+            }
+            if (node.right) {
+                setTargetPositions(node.right, depth + 1, node.targetX + HORIZONTAL_SPACING, maxX);
+            }
+        }
+
+        function animateTree(timestamp) {
+            if (!animationStartTime) {
+                animationStartTime = timestamp;
+            }
+
+            const elapsed = timestamp - animationStartTime;
+            const progress = Math.min(1, elapsed / ANIMATION_DURATION);
+            const easedProgress = 0.5 - 0.5 * Math.cos(progress * Math.PI);
+
+            function updateNodePosition(node) {
+                if (!node) return;
+                if (node.targetX !== undefined && node.targetY !== undefined) {
+                    node.x = node.startX + (node.targetX - node.startX) * easedProgress;
+                    node.y = node.startY + (node.targetY - node.startY) * easedProgress;
+                }
+                updateNodePosition(node.left);
+                updateNodePosition(node.right);
+            }
+            
+            updateNodePosition(root);
+            drawTree();
+
+            if (progress < 1) {
+                requestAnimationFrame(animateTree);
+            } else {
+                isAnimating = false;
+                animationStartTime = null;
+                if (root) clearHighlights(root);
+                drawTree();
+                // After animation is done, show the general insertion code again
+                updateCodeReference('INSERT'); 
+            }
+        }
+
+
+        function drawNode(node) {
+            if (node.left) {
+                ctx.beginPath();
+                ctx.moveTo(node.x, node.y);
+                ctx.lineTo(node.left.x, node.left.y - NODE_SIZE / 2);
+                ctx.strokeStyle = '#64748b';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                drawNode(node.left);
+            }
+            if (node.right) {
+                ctx.beginPath();
+                ctx.moveTo(node.x, node.y);
+                ctx.lineTo(node.right.x, node.right.y - NODE_SIZE / 2);
+                ctx.strokeStyle = '#64748b';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                drawNode(node.right);
+            }
+
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, NODE_SIZE, 0, 2 * Math.PI);
+
+            const balance = getBalance(node);
+            let fillColor = '#4f46e5';
+            let textColor = '#ffffff';
+
+            if (node.highlight) {
+                 fillColor = '#dc2626';
+            } else if (balance > 1 || balance < -1) {
+                fillColor = '#f59e0b';
+            }
+
+            ctx.fillStyle = fillColor;
+            ctx.fill();
+            ctx.strokeStyle = '#e0f2f1';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = textColor;
+            ctx.font = `bold ${NODE_SIZE * 0.6}px Inter`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(node.key, node.x, node.y);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = `400 ${NODE_SIZE * 0.4}px Inter`;
+            ctx.fillText(`BF:${balance}`, node.x, node.y + NODE_SIZE + 5);
+        }
+
+        function drawTree() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (!root) return;
+            drawNode(root);
+        }
+
+        /**
+         * Event Handlers
+         */
+
+        function updateStatus(message, isError = false) {
+            statusMessage.innerHTML = message;
+            statusMessage.className = `text-gray-200 ${isError ? 'text-red-400 font-bold' : ''}`;
+        }
+
+        function handleInsert() {
+            if (isAnimating) {
+                updateStatus("Please wait for the current animation to finish.", true);
+                return;
+            }
+
+            const inputElement = document.getElementById('nodeInput');
+            const keyString = inputElement.value.trim();
+
+            if (!keyString) {
+                updateStatus("Please enter a number to insert.", true);
+                return;
+            }
+
+            const key = parseInt(keyString, 10);
+
+            if (isNaN(key) || key < 0 || key > 999) {
+                updateStatus("Invalid input. Please enter a number between 0 and 999.", true);
+                inputElement.value = '';
+                return;
+            }
+
+            captureStartPositions(root);
+            const steps = [];
+            const newRoot = insert(root, key, steps);
+            root = newRoot; 
+            inputElement.value = '';
+            
+            const margin = 20;
+            setTargetPositions(root, 0, margin, canvas.width - margin);
+
+            function initializeNewNodePosition(node) {
+                if (!node) return;
+                if (node.x === 0 && node.y === 0) { 
+                    node.x = node.targetX;
+                    node.y = node.targetY;
+                    node.startX = node.targetX;
+                    node.startY = node.targetY;
+                }
+                initializeNewNodePosition(node.left);
+                initializeNewNodePosition(node.right);
+            }
+            initializeNewNodePosition(root);
+
+            let finalMessage = `Successfully inserted key <span class="text-indigo-300 font-bold">${key}</span>.`;
+            const lastStep = steps[steps.length - 1];
+            let rotationType = null;
+
+            if (lastStep.type.endsWith('_ROTATION')) {
+                rotationType = lastStep.type.replace('_ROTATION', '');
+                let explanation;
+                let pivotKey = lastStep.pivot;
+
+                switch (rotationType) {
+                    case 'LL':
+                        explanation = `Unbalanced (LL Case) at pivot ${lastStep.pivot}. Executed a single Right Rotation.`;
+                        break;
+                    case 'RR':
+                        explanation = `Unbalanced (RR Case) at pivot ${lastStep.pivot}. Executed a single Left Rotation.`;
+                        break;
+                    case 'LR':
+                        explanation = `Unbalanced (LR Case) at pivot ${lastStep.pivot}. Executed a Left-Right double rotation.`;
+                        pivotKey = lastStep.innerPivot;
+                        break;
+                    case 'RL':
+                        explanation = `Unbalanced (RL Case) at pivot ${lastStep.pivot}. Executed a Right-Left double rotation.`;
+                        pivotKey = lastStep.innerPivot;
+                        break;
+                }
+                finalMessage = `Insertion of <span class="text-indigo-300 font-bold">${key}</span> caused an imbalance. <span class="text-yellow-300 font-semibold">${rotationType} Case: ${explanation}</span>`;
+                
+                highlightNode(root, pivotKey);
+                updateCodeReference(rotationType); // Show rotation code
+            } else if (lastStep.type === 'DUPLICATE') {
+                finalMessage = `Key <span class="text-indigo-300 font-bold">${key}</span> already exists. Insertion skipped.`;
+                updateCodeReference('INSERT'); // Still show insert code
+            } else {
+                updateCodeReference('INSERT'); // Still show insert code
+            }
+            
+            updateStatus(finalMessage, rotationType !== null);
+
+            if (root && !isAnimating) {
+                isAnimating = true;
+                animationStartTime = null;
+                requestAnimationFrame(animateTree);
+            } else {
+                drawTree();
+            }
+        }
+
+        function handleReset() {
+            root = null;
+            isAnimating = false;
+            animationStartTime = null;
+            drawTree();
+            updateStatus("The AVL Tree has been reset and is now empty.", false);
+            updateCodeReference('INSERT'); // Reset code display
+        }
+
+        // Initial draw when the script loads
+        drawTree();
+
+        // --- Event Listener Setup ---
+        const insertBtn = document.getElementById('insertBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const inputElement = document.getElementById('nodeInput');
+        
+        if (insertBtn) insertBtn.addEventListener('click', handleInsert);
+        if (resetBtn) resetBtn.addEventListener('click', handleReset);
+        
+        if (inputElement) {
+            inputElement.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    handleInsert();
+                }
+            });
+        }
+        // ----------------------------
+    </script>
 </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Basic reset for all elements */
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        /* Center the login card on the page */
+        body{
+            font-family: cursive;
+            background-color: rgb(69, 67, 66);
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Enable flexbox */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
+
+        /* The main container for the login form */
+        .card{
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px; /* Adjusted width for better spacing */
+            border: 1px solid black;
+            text-align: center; /* Center the h2 title */
+        }
+        
+        /* Form styling */
+        form{
+            display: flex;
+            flex-direction: column; /* Stack form elements vertically */
+            margin-top: 20px;
+        }
+
+        /* Input field styling */
+        input{
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Button styling */
+        button{
+            background-color: rgb(58, 122, 148);
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* 
+          CSS Keyframe Animations:
+          '@keyframes' defines an animation. You can change CSS properties over a period of time.
+        */
+        @keyframes example {
+            from { background-color: rgb(58, 122, 148); } /* Starting color */
+            to   { background-color: skyblue; }          /* Ending color */
+        }
+
+        /* Apply the animation on hover */
+        button:hover{
+            /* 'animation-name' specifies the name of the @keyframes animation. */
+            animation-name: example;
+            /* 'animation-duration' specifies how long the animation should take to complete. */
+            animation-duration: 1s;
+            background-color: skyblue; /* Set final state for after animation */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Login Page</h2>
+        <form action="">
+            <input type="email" name="" id="" placeholder="Email-id">
+            <input type="password" name="" id="" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

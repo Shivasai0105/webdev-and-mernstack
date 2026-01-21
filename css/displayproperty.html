@@ -12,9 +12,28 @@
     }
     .box{
         border: 2px solid blue;
-        display: inline-block; /*here we are changing the block element to inline-block element*/
+        /* 
+          The 'display' property specifies the display behavior of an element.
+          
+          - 'block': Starts on a new line and takes up the full width available.
+                     Respects width, height, margin, and padding. (e.g., <div>, <p>, <h1>)
+          
+          - 'inline': Does not start on a new line and only takes up as much width as necessary.
+                      Does NOT respect width, height, or vertical margin/padding. (e.g., <span>, <a>)
+                      
+          - 'inline-block': Sits on the same line like an inline element, but behaves like a 
+                            block element, meaning it respects width, height, margin, and padding.
+                            
+          - 'none': The element is completely removed from the page and does not take up any space.
+        */
+        display: inline-block; 
         padding:45px;
         margin: 10px;
+    }
+
+    span {
+        /* Spans are 'inline' by default. Notice how they sit next to each other. */
+        border: 1px solid red;
     }
 </style>
 <body>
@@ -37,9 +56,9 @@
         I am a box
     </div>
     <div class="box">
-        I am another box
+        I am another box (inline-block)
     </div>
-    <span>I am good</span>
-    <span>Boy</span>
+    <span>I am good (inline)</span>
+    <span>Boy (inline)</span>
 </body>
 </html>

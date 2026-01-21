@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .profile-card {
+  width: 320px;
+  background-color: #a76868;
+  
+  /* Flexbox Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers items horizontally */
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Basic Spacing */
+  padding: 20px;
+  border-radius: 10px;
+}
+.profile-photo{
+    width: 120px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}   
+.social-links{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+.icon{
+    font-size: 24px;
+    text-decoration: none;
+    color: #0077b5;
+    transition: color 0.3s;
+}
+.icon:hover{
+    color: #004466;
+}
+    </style>
+</head>
+<body>
+ <div class="profile-card">
+
+  <img src="IMG_20250217_182109.jpg" alt="Your Profile Picture" class="profile-photo">
+
+  <div class="profile-info">
+    <h2>S shiva Sai Goud</h2>
+    <p>Btech 3rd Year SNIST College</p>
+  </div>
+
+  <div class="social-links">
+    <a href="#" class="icon facebook">F</a>
+    <a href="#" class="icon twitter">T</a>
+    <a href="#" class="icon linkedin">L</a>
+  </div>
+
+</div>
+</body>
+</html>

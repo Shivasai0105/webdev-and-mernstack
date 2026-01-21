@@ -6,21 +6,33 @@
     <title>css overflow handling</title>
     <style>
         .box{
-            width: 45ww;
-            height: 10vh;
+            width: 45vw; /* Using vw (viewport width) for responsive width */
+            height: 10vh; /* Using vh (viewport height) for responsive height */
             border: 2px solid black;
-            overflow: auto; /* scroll, hidden, auto, visible */
-            /* scroll: always show scrollbar */
-            /* hidden: hide overflow content */
-            /* auto: show scrollbar when needed */
-            /* visible: overflow content is visible */
-            /* but not recommended */
-            /* clip: hide overflow content */
-            /* but not recommended */
-            white-space: nowrap; /* prevent text from wrapping */
-            /*text-overflow: ellipsis;
-            /* add ellipsis (...) to overflowing text */
-            /* but only works with white-space: nowrap */
+
+            /* 
+              The 'overflow' property controls what happens to content
+              that is too big to fit into its container.
+            */
+            overflow: auto; 
+            
+            /* --- Other overflow values --- */
+            /* overflow: scroll;  - Always shows scrollbars, even if not needed. */
+            /* overflow: hidden;   - Hides any content that overflows. */
+            /* overflow: visible;  - (Default) Content overflows the box and is visible. */
+
+            /* 
+              'white-space: nowrap' prevents the text inside the element
+              from wrapping to the next line. This is often used with overflow.
+            */
+            white-space: nowrap;
+
+            /*
+              'text-overflow: ellipsis' will display "..." for text that is
+              clipped. This only works when 'overflow' is 'hidden', 'scroll', or 'auto'
+              and 'white-space' is 'nowrap'.
+            */
+            /* text-overflow: ellipsis; */
         }
     </style>
 </head>

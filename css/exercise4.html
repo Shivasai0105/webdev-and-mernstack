@@ -9,49 +9,62 @@
         @import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@100&display=swap');
     </style>
     <style>
-        /* Create a multicolor navbar using CSS Variables & Global variables */
+        /* 
+          CSS Variables (also known as Custom Properties) allow you to store values 
+          in one place and reuse them throughout your stylesheet.
+        */
+
+        /* 
+          The ':root' pseudo-class selects the root element of the document (the <html> tag).
+          Defining variables here makes them "global" and accessible to all other elements.
+        */
         :root {
             --color1: #c67474;
             --color2: #69c369;
             --color3: #7c7cd2;
             --color4: #cfcf72;
             --color5: #ad86ad;
-            --color6: #91c0c0;
+            --color6: #91c0c0; /* This variable is defined but not used */
         }
 
+        /* Basic reset for all elements */
         * {
             padding: 0;
             margin: 0;
-
         }
 
+        /* Styling for the navigation bar container (the <ul> element) */
         .navbar {
-            display: flex;
-            margin: 0px;
-            padding: 10px;
-            list-style: none;
-            background-color: rgb(127, 10, 127);
+            display: flex; /* Use flexbox to align list items horizontally */
+            list-style: none; /* Remove the default bullet points from the list */
+            background-color: rgb(127, 10, 127); /* Fallback background color */
         }
 
+        /* Styling for each navigation item (the <li> elements) */
         .navbar li {
             padding: 10px;
-            /* margin: 10px; */
             color: white;
-            list-style: none;
             font-family: "Poppins", sans-serif;
             font-size: 15px;
             font-weight: 600;
-            transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out; /* Smooth transition for hover effects */
         }
 
         li {
-            cursor: pointer;
+            cursor: pointer; /* Change cursor to a pointer on hover */
         }
 
-        /* .navbar li:hover{ 
-            background-color: var(--color2);
+        /* Change the background color and text color on hover */
+        .navbar li:hover{ 
+            background-color: var(--color2); /* Use the CSS variable for the color */
             color: black;
         }
+
+        /* 
+          The ':nth-child()' pseudo-class selects elements based on their position.
+          Here, we use it to give each navigation item a unique background color
+          by calling the variables we defined in :root.
+        */
         .navbar li:nth-child(1){
             background-color: var(--color1);
         }
@@ -67,7 +80,6 @@
         .navbar li:nth-child(5){
             background-color: var(--color5);
         }
-        */
     </style>
 </head>
 

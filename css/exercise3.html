@@ -5,62 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Creation</title>
     <style>
+        /* Universal selector to reset default browser margins and padding */
         *{
             padding: 0;
             margin: 0;
-            
         }
-        body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
+        /* Center the card vertically and horizontally on the page */
+        body {
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Enable flexbox layout */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        /* The main container for the card */
         .card{
             height: 600px;
             width: 300px;
             border: 2px solid black;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow:  0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Space inside the card */
+            box-shadow:  0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+        }
 
-        }
+        /* Styles for the image inside the card */
         div img{
-            width: 100%;
+            width: 100%; /* Make the image responsive to the card's width */
             height: 200px;
-            border-radius: 10px;
-            position: relative;
-            top: 0px;
-            left: 0px;
+            border-radius: 10px; /* Match the card's rounded corners */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
         }
+
+        /* Styles for the tag-like circles (e.g., "nature", "mountain") */
         .circle{
             margin: 2px;
             border: 1px solid rgb(203, 197, 197);
-            border-radius: 25px;
-            padding: 2px;
-            display:inline-block;
-
-
+            border-radius: 25px; /* Make it pill-shaped */
+            padding: 2px 8px; /* Add some horizontal padding */
+            display:inline-block; /* Allows tags to sit side-by-side */
+            font-size: 0.8rem; /* Smaller font size for tags */
         }
+
+        /* Container for the button to center it */
         .btn{
-            /* margin-top: 10px; */
-            text-align: center;
+            text-align: center; /* Center the button horizontally */
+            margin-top: 20px; /* Add some space above the button */
         }
-        .btn > button{
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
-            background-color: darkturquoise;
-            border-radius: 50px;
-            border:none;
-            
 
+        /* Styles for the button itself */
+        .btn > button{
+            padding: 10px 20px; /* Add padding to the button */
+            background-color: darkturquoise;
+            border-radius: 50px; /* Make the button pill-shaped */
+            border:none; /* Remove the default border */
+            color: white; /* White text */
         }
+
+        /* Styles for the button when the user hovers over it */
         button:hover{
-            background-color: rgb(0, 0, 0);
+            background-color: rgb(0, 0, 0); /* Change background to black on hover */
             color: white;
-            cursor: pointer;
+            cursor: pointer; /* Change the cursor to a pointer */
         }
         
         

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Exercise</title>
+    <style>
+        /* Basic reset for all elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Add padding to the top and bottom of the body to prevent content
+           from being hidden behind the fixed navbar and footer. */
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 60px; 
+            padding-bottom: 60px;
+        }
+        
+        /* Fixed navigation bar at the top of the page */
+        .nav {
+            background-color: purple;
+            padding: 15px 20px;
+            color: white;
+            font-weight: bold;
+            
+            /* 'position: fixed' keeps the element in the same place even when the page is scrolled. */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0; /* Ensures it spans the full width */
+            z-index: 1000; /* Keeps the navbar on top of other content */
+        }
+        
+        /* Main content container */
+        .container {
+            background-color: green;
+            /* 'calc(100vh - 120px)' calculates the height to fill the viewport minus the navbar and footer heights. */
+            min-height: calc(100vh - 120px);
+            width: 100%;
+            
+            /* Using flexbox to center the content vertically and horizontally */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Stacks flex items vertically */
+            padding: 40px 20px;
+        }
+        
+        /* Container for the colored boxes */
+        .boxes-container {
+            background-color: black;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Flex container for the individual boxes */
+        .boxes {
+            display: flex;
+            gap: 30px; /* Adds space between the boxes */
+            flex-wrap: wrap; /* Allows boxes to wrap to the next line on smaller screens */
+            justify-content: center;
+        }
+        
+        /* Individual colored box styling */
+        .box {
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .box.pink { background-color: pink; }
+        .box.blue { background-color: cornflowerblue; }
+        
+        /* Welcome message styling */
+        .message {
+            background-color: black;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Fixed chatbot image icon */
+        .image {
+            position: fixed;
+            bottom: 80px; /* Positioned above the footer */
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 50%; /* Makes it a circle */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        /* Fixed footer at the bottom of the page */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            color: black;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .image img {
+            display: block;
+            height: 45px;
+            width: 45px;
+        }
+        
+        /* --- Responsive Design for smaller screens --- */
+        @media (max-width: 768px) {
+            .boxes {
+                flex-direction: column; /* Stack the boxes vertically */
+                align-items: center;
+            }
+            
+            .box {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .message {
+                font-size: 16px;
+                max-width: 90%;
+            }
+            
+            .image {
+                bottom: 70px;
+                right: 10px;
+            }
+            
+            .boxes-container {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">NavBar</div>
+    <div class="container">
+        <div class="boxes-container">
+            <div class="boxes">
+                <div class="box pink"></div>
+                <div class="box blue"></div>
+            </div>
+        </div>
+        <div class="message">
+            Welcome to this sigma web express
+        </div>
+        <div class="image">
+            <img src="https://cdn4.iconfinder.com/data/icons/chatbot-robot-1/100/chatbot_01_01_03_bot_chat_robot_app_artificial_chatbot_dialog-1024.png" alt="Chatbot icon">
+        </div>
+    </div>
+    <div class="footer">
+        Footer Content - © 2025 Sigma Web Express
+    </div>
+</body>
+</html>

@@ -7,57 +7,74 @@
     <!-- https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units -->
 </head>
 <style>
- /*   px depends on resolution,
-vh vw are device specific,
-vmin and vmax depends on orientation,
-em is multiplier on current value,
-rem is a multiplier on current value in respective to the root element,
- % depends on parent 
- 
- 1)px (Pixels): Pixels are an absolute unit of measurement. They provide a fixed size regardless of other factors like text size or screen resolution. For example, 10px means the element is 10 pixels wide or tall.
+    /* 
+      --- CSS Sizing Units Explained ---
 
-2)rem (Root em): "rem" stands for "root em." One "rem" is equivalent to the font size of the root element (usually the <html> element). If the root font size is set to 16px, then 1rem is equal to 16px, and 2rem is equal to 32px. It's a relative unit that makes it easy to scale elements based on the root font size.
+      1. Absolute Units:
+         - px (Pixels): A fixed size. 1px is 1/96th of an inch. Good for things that should not scale.
 
-3)em (Ems): "em" is also a relative unit that's relative to the font size of the parent element. If the parent element's font size is 16px and you set a child element to 2em, it would be 32px (2 times the parent's font size).
+      2. Relative Units (Font):
+         - em: Relative to the font-size of the parent element. 
+               If parent font-size is 16px, 2em = 32px.
+         - rem (Root em): Relative to the font-size of the root (<html>) element.
+               This is great for creating scalable layouts.
 
-4)vh (Viewport Height): "vh" is a relative unit that represents a percentage of the viewport height. For example, 50vh would be 50% of the height of the viewport, so it's responsive to the screen size.
+      3. Relative Units (Viewport):
+         - vh (Viewport Height): 1vh is 1% of the viewport's (browser window's) height.
+         - vw (Viewport Width): 1vw is 1% of the viewport's width.
+         - vmin: 1vmin is 1% of the viewport's smaller dimension (height or width).
+         - vmax: 1vmax is 1% of the viewport's larger dimension.
 
-5)vw (Viewport Width): "vw" is similar to "vh" but is relative to the viewport's width. For example, 25vw is 25% of the viewport width.
+      4. Percentage (%):
+         - %: Relative to the parent element's corresponding property.
+    */
 
-In summary, "px" is an absolute unit, "rem" and "em" are relative units based on font sizes, and "vh" and "vw" are relative units based on the viewport's dimensions. Each of these units has its use case in web design, allowing for both fixed and responsive layouts.
- 
- */
+    /* Universal selector to reset default browser styles */
     *{
         margin: 0;
         padding: 0;
     }
+
     .box{
         box-sizing: border-box;
         border: 1px solid black;
-        /* width: 1200px; */
-        /* height: 10vh; */
-        width : 80vw; /* 100% of the viewport width */
-        height: 10vh; /* 10% of the viewport height */
-        margin:  auto; /* center the box  only for block elements not for inline elements*/
+        
+        /* vw (Viewport Width): This box will be 80% of the browser window's width. */
+        width : 80vw; 
+        
+        /* vh (Viewport Height): This box will be 10% of the browser window's height. */
+        height: 10vh; 
+        
+        /* 'margin: auto' on a block element with a set width will center it horizontally. */
+        margin:  auto; 
 
         background-color: lightblue;
     }
+
     .container{
         box-sizing: border-box;
         border: 2px solid black;
-        /* width: 1200px; */
-        /* height: 10vh; */
-        min-width: 80vw;
-        width : 80vw; /* 100% of the viewport width */
-        height: 80vh; /* 10% of the viewport height */
-        margin: 23px auto; /* center the box  only for block elements not for inline elements*/
-        font-size: 16px;
+        width : 80vw;
+        height: 80vh;
+        margin: 23px auto;
+        
+        /* This font-size will be the base for 'em' units in child elements. */
+        font-size: 16px; 
         background-color: lightblue;
     }
+
     .container p{
-        font-size: 3em; /* 1em is equal to the font size of the parent element 
-        example 1em = 16px as in parent if we take 1.5em them the calculated text size is 24px  if 3em = 48px*/
-        /*font-size: 1rem; /* 1rem is equal to the font size of the root element (html)*/
+        /* 
+          em (Ems): The font-size is 3 times the font-size of the parent (.container).
+          Calculation: 3 * 16px = 48px.
+        */
+        font-size: 3em; 
+        
+        /* 
+          rem (Root em): If we used rem, it would be relative to the root <html> font-size.
+          If the root font-size is 16px (browser default), 1rem = 16px.
+        */
+        /* font-size: 1rem; */
     }
     .mycon{
         box-sizing: border-box;

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox MasterClass</title>
+    <style>
+        /* 
+          --- CSS Flexbox Explained ---
+          Flexbox is a one-dimensional layout model that allows items in a container 
+          to be aligned and distributed space efficiently.
+        */
+
+        .container{
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+    
+        /* This is the parent element that becomes a flex container. */
+        .flex-container{
+            /* 'display: flex' turns this element into a flex container.
+               Its direct children become flex items. */
+            display: flex;
+            height: 200px;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+        }
+
+        /* Styling for the flex items (the circles) */
+        .circle{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .pastel-1{
+            background-color: #ffb3ba;
+        }
+        .pastel-2{
+            background-color: #baffc9;
+        }
+        .pastel-3{
+            background-color: #bae1ff;
+        }
+        .pastel-4{
+            background-color: #ffffba;
+        }
+        .pastel-5{
+            background-color: #ffdfba;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>FlexBox MasterClass Demo</h1>
+    <div class="container">
+        <h2>1. Default Flex (row)</h2>
+        <div class="flex-container">
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <h2>2.Flex Direction:Column</h2>
+        <div class="flex-container" style="flex-direction: column;"> <!-- column reverse is used for show the elements in reverse-->
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <h2>justify-content:Space-betweeen</h2>
+        <div class="flex-container" style="justify-content: space-between;"> 
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <h2>Align items:Center</h2>
+        <div class="flex-container" style="align-items: center;"> 
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            
+        </div>
+        <div class="container">
+        <h2>flex-wrap:wrap</h2> <!--The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.-->
+        <div class="flex-container" style="flex-wrap: wrap;"> 
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            <div class="circle pastel-1">6</div>
+            <div class="circle pastel-2">7</div>
+            <div class="circle pastel-3">8</div>
+            <div class="circle pastel-4">9</div>
+            <div class="circle pastel-5">10</div>
+        </div>
+    </div>
+     <div class="container">
+        <h2>align content:space around</h2> 
+        <div class="flex-container" style="align-content: space-around;"> 
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            <div class="circle pastel-1">6</div>
+            <div class="circle pastel-2">7</div>
+            <div class="circle pastel-3">8</div>
+            <div class="circle pastel-4">9</div>
+            <div class="circle pastel-5">10</div>
+        </div>
+    </div>
+     <div class="container">
+        <h2>Order property</h2> 
+        <div class="flex-container"> 
+            <div class="circle pastel-1">1</div>
+            <div class="circle pastel-2">2</div>
+            <div class="circle pastel-3">3</div>
+            <div class="circle pastel-4">4</div>
+            <div class="circle pastel-5">5</div>
+            
+        </div>
+    </div>
+</body>
+</html>

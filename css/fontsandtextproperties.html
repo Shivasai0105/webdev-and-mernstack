@@ -4,45 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        fonts,texts,color properties 
+        Fonts, Texts, and Color Properties 
     </title>
 <style>
+    /* Import custom fonts from Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    
+    /* --- FONT PROPERTIES --- */
     p{
+        /* font-family: Specifies the font for an element. It can hold several font names as a "fallback" system. */
         font-family: 'Baloo 2', cursive;
+        
+        /* font-size: Sets the size of the font. */
         font-size: 20px;
-        font-weight: 400;
-        color:skyblue;
-        line-height: 300%;
+        
+        /* font-weight: Sets how thick or thin characters in text should be displayed. */
+        font-weight: 400; /* 400 is the same as 'normal' */
+        
+        /* color: Sets the color of the text. */
+        color: skyblue;
+        
+        /* line-height: Specifies the height of a line of text. */
+        line-height: 1.5; /* Using a unitless value is often best practice */
     }
     h1{
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
-    h2{
-        text-align: center;
-        text-transform: uppercase;
-        text-decoration: underline;
-        text-decoration-color:aqua ;
-        text-decoration-style: underline;
-        text-decoration-thickness: 10px;
-        text-indent: 30px;
-        text-overflow: ellipsis;
-    }
-    /*we can use fonts from google fonts with including the link in the head section and importing the font in the css file
-    
-        🔷 FONT PROPERTIES:
-        - font-family: Specifies the typeface.
-        - font-style: Sets the style (normal, italic, oblique).
-        - font-weight: Defines the thickness (normal, bold, bolder).
-        - text-decoration: Adds decoration (underline, overline, line-through).
-    */
-    .lavde{
-        border:2px solid red;
-        width: 134px;
-        word-break: break-all;
-        word-wrap: break-word;  
-        overflow: hidden;
 
+    /* --- TEXT PROPERTIES --- */
+    h2{
+        /* text-align: Specifies the horizontal alignment of text. */
+        text-align: center;
+        
+        /* text-transform: Controls the capitalization of text. */
+        text-transform: uppercase;
+        
+        /* text-decoration: Specifies the decoration added to text (e.g., underline, overline, line-through). */
+        text-decoration: underline;
+        text-decoration-color: aqua;
+        text-decoration-style: solid; /* 'underline' is not a style, 'solid' is */
+        text-decoration-thickness: 2px;
+        
+        /* text-indent: Specifies the indentation of the first line in a text-block. */
+        text-indent: 30px;
+    }
+
+    /* --- WORD AND OVERFLOW HANDLING --- */
+    .text-box{
+        border: 2px solid red;
+        width: 134px;
+        
+        /* word-break: Specifies how words should break when reaching the end of a line. */
+        word-break: break-all; /* Allows unbreakable words to be broken */
+        
+        /* overflow: Specifies what should happen if content overflows an element's box. */
+        overflow: hidden; /* Hides the overflowing content */
+        
+        /* text-overflow: Specifies how hidden overflowed content should be signaled to the user. */
+        text-overflow: ellipsis; /* Adds "..." to the end of the clipped text */
+        white-space: nowrap; /* Prevents text from wrapping, necessary for ellipsis to work */
     }
 </style>
 </head>
@@ -50,8 +70,8 @@
     <!-- https://codepen.io/web-dot-dev/pen/yLojraG -->
     <h1>Fonts and Text Properties</h1>
     <h2>this is h2 tag </h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia aut dolorum temporibus odit vitae, reiciendis numquam! Consequuntur vitae harum pariatur.</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, ab soluta. Autem suscipit iste cumque. Aliquam assumenda dolores distinctio expedita eius iure? Molestiae enim doloremque, dolorem sint pariatur eos nostrum, dolore, hic libero porro velit rerum laudantium laborum et at debitis error sunt. Magnam, provident?</p>
-    <p class="lavde">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas autem ut repellendus aliquam qui veniam perferendis. Dicta tempora quia consectetur odio incidunt iure ad amet fugit aliquid molestias veniam nam voluptatem necessitatibus adipisci tempore, iste obcaecati similique fugiat excepturi mollitia autem. Dolor maxime repellat temporibus dolores laudantium quisquam, earum dignissimos ad fuga totam iste. Cum!</p>
+    <p>This paragraph uses the 'Baloo 2' font from Google Fonts. It has a specific font-size, weight, color, and line-height.</p>
+    <p>This is another paragraph with the same styling, demonstrating consistency.</p>
+    <p class="text-box">This box demonstrates word-break and text-overflow with a verylongunbreakablewordandlotsoftext.</p>
 </body>
 </html>
