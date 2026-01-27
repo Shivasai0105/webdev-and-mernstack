@@ -98,7 +98,7 @@ let products = ["Laptop", "Phone", "Tablet", "Monitor"];
 
 let searchResult = products.filter(item => item.toLowerCase().includes("o"));
 
-console.log(searchResult); // ["Phone", "Monitor"]
+console.log(searchResult); // ["Laptop","Phone", "Monitor"]
 
 /* WHY filter():
 - Used in search bars
