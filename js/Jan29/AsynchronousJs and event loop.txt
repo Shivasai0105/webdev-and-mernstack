@@ -1,0 +1,77 @@
+Asynchronous JavaScript & Event Loop — Readable Notes
+
+Key idea: “Advanced JavaScript” is a misleading term.
+- There is no separate “advanced” version of the language.
+- Topics like async behavior, promises, callbacks, and APIs are part of JavaScript usage.
+- Best learning happens through projects, not by memorizing theory alone.
+
+1) Synchronous vs Asynchronous
+Synchronous (regular) code:
+- Executes line by line in the order written.
+- Example: console.log, for loops, basic functions.
+
+Asynchronous code:
+- Some tasks must wait (pause) before completing.
+- JavaScript itself doesn’t “pause” — it uses the runtime environment to help.
+
+Common async tasks:
+- Network calls (API/database requests)
+- File read/write (disk operations)
+- Timers (setTimeout, setInterval)
+- User input (clicks, keyboard, form events)
+- Other I/O operations
+
+2) Why do we need async?
+- Real-world operations take time (network latency, disk I/O, timers).
+- Servers might be in different countries; responses can take seconds.
+- Without async support, the app would freeze waiting for results.
+
+3) Example with setTimeout
+Concept:
+- A timer callback is scheduled to run later.
+- Meanwhile, the rest of the code keeps executing.
+
+Typical outcome:
+- Logs from normal code appear first.
+- Timer callback runs after the delay, even if the code appears earlier.
+
+4) Important note about JavaScript capabilities
+- JavaScript alone cannot do network calls or timers.
+- Those abilities come from the runtime environment:
+	- Browser (Web APIs)
+	- Node.js, Deno, Bun, etc.
+
+5) The Event Loop (core diagram explained)
+Main parts:
+- Code file (your JS code)
+- Call Stack (where functions execute)
+- Event Loop (keeps checking the stack)
+- Runtime Environment (Browser/Node/Deno/Bun)
+- Queues (task queues; often more than one)
+
+How execution works:
+1. Functions are pushed onto the Call Stack.
+2. Event Loop checks if the stack is free.
+3. If a task needs external help (timer/network/I/O), it is sent to the runtime.
+4. Runtime performs the task.
+5. When done, the callback goes into a queue (regular or “VIP”/higher priority queue).
+6. Event Loop moves queued callbacks to the Call Stack when it is empty.
+7. Callback runs, then is removed from the stack.
+
+Why the output order looks “wrong”:
+- Timer callback is delayed and queued.
+- Meanwhile, regular synchronous code runs first.
+- When the delay ends, the callback executes later.
+
+6) Big takeaway
+- JavaScript is single-threaded, but the environment handles async work.
+- Event Loop + Call Stack + Queues are the core mental model.
+- Understanding this explains callbacks, promises, async/await behavior later.
+
+Next topics that build on this:
+- Callbacks
+- Promises
+- Async/Await
+- Fetch and real API requests
+
+Remember: This diagram and flow is the foundation for all async JavaScript behavior.
