@@ -1,0 +1,56 @@
+ASYNC / AWAIT — SIMPLE EXPLANATION
+
+1) What are callbacks?
+- A callback is a function you pass into another function.
+- It runs later, after some work is finished (like a timer or API call).
+- Problem: nested callbacks can become hard to read ("callback hell").
+
+2) What are Promises?
+- A Promise is an object that represents a future result.
+- It can be:
+  - resolved (success), or
+  - rejected (error)
+- You consume promises using .then() and .catch().
+- Promises reduce callback nesting and make code cleaner.
+
+3) What is async/await?
+- async/await is just a nicer way to write promise code.
+- It looks synchronous (step-by-step) but still runs asynchronously.
+- You can only use `await` inside an `async` function.
+
+Example (Promises):
+fetchData()
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+
+Example (async/await):
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+4) How async/await differs from callbacks and promises
+- Callbacks: easy to start, but can get messy when nested.
+- Promises: cleaner than callbacks, but still chained.
+- async/await: cleanest to read, looks like normal code.
+
+5) What are they used for?
+- Any task that takes time:
+  - API calls
+  - database calls
+  - file reading
+  - timers
+
+6) Why use async/await?
+- Easier to read and debug.
+- Works with try/catch for error handling.
+- Avoids callback hell.
+
+7) When to use what?
+- Callbacks: simple or legacy code.
+- Promises: when you want chaining or you already have promise APIs.
+- async/await: best for clean, readable async code (most modern choice).
