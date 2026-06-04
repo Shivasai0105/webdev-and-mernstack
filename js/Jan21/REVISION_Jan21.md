@@ -17,7 +17,7 @@ Think of an object like a real-world object (a person, a car, a book). It holds 
 const person = {
   firstName: "Alex",
   age: 25,
-  isLoggedIn: true
+  isLoggedIn: true   
 };
 
 // Access information
